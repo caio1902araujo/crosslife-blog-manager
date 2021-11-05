@@ -1,0 +1,26 @@
+.wrapper{
+  margin-bottom: 1.25rem;
+}
+
+.label{
+  display: block;
+  font-size: 1.125rem;
+  line-height: 1;
+  padding-bottom: 0.5rem;
+}
+
+.input{
+  background: var(--color-fourth);
+  outline: none;
+  display: block;
+  color: var(--color-second);
+  font-size: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  padding: 0.625rem;
+}
+
+.input:hover,
+.input:focus{
+  border-color: var(--color-third);
+}
