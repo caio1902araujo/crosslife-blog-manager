@@ -1,5 +1,5 @@
 import React from "react";
-// import { useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { SIGN_IN, SIGN_OUT } from "../Services/API";
 
 export const AuthContext = React.createContext();
@@ -8,6 +8,7 @@ export const AuthProvider = ({children}) => {
   const [login, setLogin] = React.useState(null);
   const [loading, setLoading] = React.useState(null);
   const [error, setError] = React.useState(null);
+  const navigate = useNavigate();
 
   const signOut = async () => {
     setLogin(false);
@@ -16,7 +17,8 @@ export const AuthProvider = ({children}) => {
     const token = localStorage.getItem("token");
     const {url, options} = SIGN_OUT(token);
     await fetch(url, options);
-    localStorage.removeItem("token")
+    localStorage.removeItem("token");
+    navigate("/");
   }
 
   const signIn = async (username, password) => {
