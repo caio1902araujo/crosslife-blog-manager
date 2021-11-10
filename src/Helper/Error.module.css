@@ -1,5 +1,11 @@
-.error{
-  color: #f31;
+p{color: #f31;}
+
+.errorPrimary{
   margin-top: 0.375rem; 
   font-size: 0.75rem;
+}
+
+.errorSecondary{
+  font-size: 0.875rem;
+  text-align: center;
 }

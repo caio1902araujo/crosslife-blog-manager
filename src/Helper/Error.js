@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './Error.module.css';
 
-const Error = ({error}) => {
+const Error = ({error, errorStyle}) => {
   return (
-    <p className={styles.error}>{error}</p>
+    <p className={styles[errorStyle]}>{error}</p>
   )
 }
 

@@ -4,11 +4,12 @@ import Input from '../../Components/form/Input';
 import Button from '../../Components/form/Button';
 import useForm from '../../Hooks/useForm';
 import { AuthContext } from '../../Hooks/useAuth';
+import Error from '../../Helper/Error';
 
 const Login = () => {
   const username = useForm();
   const password = useForm();
-  const {signIn, loading} = React.useContext(AuthContext);
+  const {signIn, loading, error} = React.useContext(AuthContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,8 +29,8 @@ const Login = () => {
           <Button styleButton="buttonSecondary" disabled>Carregando...</Button> :
           <Button styleButton="buttonSecondary">Entrar</Button>
         }
-        
       </form>
+      <Error error={error} errorStyle={"errorSecondary"}/>
     </div>
   )
 }
