@@ -8,7 +8,7 @@ const Input = ({label, id, type, value, error, onChange, onBlur}) => {
       <label htmlFor={id} className={styles.label}>{label}</label>
       <input type={type} id={id} name={id} className={styles.input} value={value} onChange={onChange} onBlur={onBlur}/>
 
-      {error && <Error error={error} />}
+      <Error error={error} errorStyle={"errorPrimary"}/>
     </div>
   )
 }
