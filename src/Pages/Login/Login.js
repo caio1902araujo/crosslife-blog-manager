@@ -8,7 +8,7 @@ import { AuthContext } from '../../Hooks/useAuth';
 const Login = () => {
   const username = useForm();
   const password = useForm();
-  const {signIn} = React.useContext(AuthContext);
+  const {signIn, loading} = React.useContext(AuthContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -23,7 +23,12 @@ const Login = () => {
       <form onSubmit={handleSubmit}>
         <Input label="Usuário" id="username" type="text" {...username}/>
         <Input label="Senha" id="password" type="password" {...password}/>
-        <Button styleButton="buttonSecondary">Entrar</Button>
+        {
+          loading ?
+          <Button styleButton="buttonSecondary" disabled>Carregando...</Button> :
+          <Button styleButton="buttonSecondary">Entrar</Button>
+        }
+        
       </form>
     </div>
   )

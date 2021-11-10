@@ -23,3 +23,9 @@
 .button:hover{
 	transform: scale(1.025);
 }
+
+.button:disabled{
+  opacity: 0.5;
+  cursor: progress;
+	transform: scale(1);
+}
