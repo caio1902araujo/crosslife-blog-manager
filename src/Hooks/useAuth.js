@@ -5,7 +5,7 @@ import { SIGN_IN, SIGN_OUT } from "../Services/API";
 export const AuthContext = React.createContext();
 
 export const AuthProvider = ({children}) => {
-  const [login, setLogin] = React.useState(null);
+  const [login, setLogin] = React.useState(false);
   const [loading, setLoading] = React.useState(null);
   const [error, setError] = React.useState(null);
   const navigate = useNavigate();
@@ -31,6 +31,7 @@ export const AuthProvider = ({children}) => {
       const {Token} = await response.json();
       window.localStorage.setItem('token', Token);
       setLogin(true);
+      navigate("/noticias")
     }
     catch(err){
       setError(err.message);
