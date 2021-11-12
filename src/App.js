@@ -1,9 +1,9 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './Hooks/useAuth';
-import ProtectedRoute from './Helper/ProtectedRoute';
 import Login from './Pages/Login/Login';
 import News from './Pages/News/News';
+import ProtectedRoute from './Helper/ProtectedRoute';
 
 function App() {
   return (
@@ -13,7 +13,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Login/>}/>
             
-            <ProtectedRoute path="noticias" element={<News/>}/>
+            <Route path="noticias" element={<ProtectedRoute/>}>
+              <Route element={<News/>} />
+            </Route>
           </Routes>
         </AuthProvider>
       </BrowserRouter>
