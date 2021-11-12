@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './Login.module.css';
-import Input from '../../Components/form/Input';
-import Button from '../../Components/form/Button';
+import Input from '../../Components/Form/Input';
+import Button from '../../Components/Form/Button';
 import useForm from '../../Hooks/useForm';
 import { AuthContext } from '../../Hooks/useAuth';
 import Error from '../../Helper/Error';
+import Logo from '../../Components/Logo/Logo';
 
 const Login = () => {
   const username = useForm();
@@ -20,7 +21,7 @@ const Login = () => {
 
   return (
     <div className={styles.wrapper}>
-      <h1 className="logo">Cross<span className="green">life</span></h1>
+      <Logo/>
       <form onSubmit={handleSubmit}>
         <Input label="Usuário" id="username" type="text" {...username}/>
         <Input label="Senha" id="password" type="password" {...password}/>
