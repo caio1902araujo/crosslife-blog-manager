@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './Hooks/useAuth';
-import ProtectedRoute from './Helper/ProtectedRoute';
+import ProtectedRoute from './Helper/ProtectedRoute/ProtectedRoute';
 import Login from './Pages/Login/Login';
 import News from './Pages/News/News';
 import NewsCreate from './Pages/News/NewsCreate';

@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './Login.module.css';
-import Input from '../../Components/Form/Input';
-import ButtonSecondary from '../../Components/Button/ButtonSecondary';
-import useForm from '../../Hooks/useForm';
 import { AuthContext } from '../../Hooks/useAuth';
-import Error from '../../Helper/Error';
+import useForm from '../../Hooks/useForm';
+import Error from '../../Helper/Error/Error';
+import Input from '../../Components/Input/Input';
+import ButtonSecondary from '../../Components/Button/ButtonSecondary';
 import Logo from '../../Components/Logo/Logo';
 
 const Login = () => {

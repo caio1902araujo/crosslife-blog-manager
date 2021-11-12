@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Input.module.css';
-import Error from '../../Helper/Error';
+import Error from '../../Helper/Error/Error';
 
 const Input = ({label, id, type, value, error, onChange, onBlur}) => {
   return (
