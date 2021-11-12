@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Login.module.css';
 import Input from '../../Components/Form/Input';
-import Button from '../../Components/Form/Button';
+import ButtonSecondary from '../../Components/Button/ButtonSecondary';
 import useForm from '../../Hooks/useForm';
 import { AuthContext } from '../../Hooks/useAuth';
 import Error from '../../Helper/Error';
@@ -27,8 +27,8 @@ const Login = () => {
         <Input label="Senha" id="password" type="password" {...password}/>
         {
           loading ?
-          <Button styleButton="buttonSecondary" disabled>Carregando...</Button> :
-          <Button styleButton="buttonSecondary">Entrar</Button>
+          <ButtonSecondary disabled>Carregando...</ButtonSecondary> :
+          <ButtonSecondary>Entrar</ButtonSecondary>
         }
       </form>
       <Error error={error} errorStyle={"errorSecondary"}/>

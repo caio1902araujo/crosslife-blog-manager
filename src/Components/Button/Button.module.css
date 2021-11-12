@@ -1,0 +1,20 @@
+.buttonPrimary{
+	border-color: var(--color-second);
+}
+
+.buttonSecondary{
+	background: var(--color-third);
+	border-color: var(--color-third);
+}
+
+.buttonPrimary:hover,
+.buttonSecondary:hover{
+	transform: scale(1.025);
+}
+
+.buttonPrimary:disabled,
+.buttonSecondary:disabled{
+  opacity: 0.5;
+  cursor: progress;
+	transform: scale(1);
+}
