@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Login.module.css';
 import { AuthContext } from '../../Hooks/useAuth';
 import useForm from '../../Hooks/useForm';
-import Error from '../../Helper/Error/Error';
+import ErrorSecondary from '../../Helper/Error/ErrorSecondary';
 import Input from '../../Components/Input/Input';
 import ButtonSecondary from '../../Components/Button/ButtonSecondary';
 import Logo from '../../Components/Logo/Logo';
@@ -10,7 +10,9 @@ import Logo from '../../Components/Logo/Logo';
 const Login = () => {
   const username = useForm();
   const password = useForm();
-  const {signIn, loading, error} = React.useContext(AuthContext);
+  const {signIn, loading, error, login} = React.useContext(AuthContext);
+
+  console.log(login);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -31,7 +33,7 @@ const Login = () => {
           <ButtonSecondary>Entrar</ButtonSecondary>
         }
       </form>
-      <Error error={error} errorStyle={"errorSecondary"}/>
+      <ErrorSecondary error={error} />
     </div>
   )
 }

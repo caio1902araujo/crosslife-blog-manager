@@ -1,4 +1,4 @@
-p{color: #f31;}
+p{color: var(--color-error);}
 
 .errorPrimary{
   margin-top: 0.375rem; 

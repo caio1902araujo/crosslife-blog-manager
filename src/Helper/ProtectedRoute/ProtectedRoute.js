@@ -1,10 +1,10 @@
 import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
-import { AuthContext } from '../Hooks/useAuth';
+import { Navigate } from 'react-router-dom';
+import { AuthContext } from '../../Hooks/useAuth';
 
-const ProtectedRoute = () => {
+const ProtectedRoute = ({component}) => {
   const {login} = React.useContext(AuthContext);
-  return login ? <Outlet /> : <Navigate to="/" />
+  return login ? component : <Navigate to="/" />
   
 }
 
