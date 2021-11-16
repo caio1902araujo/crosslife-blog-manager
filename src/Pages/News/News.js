@@ -1,15 +1,16 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Header from '../../Components/Header/Header';
 import NewsCreate from './NewsCreate';
 import NewsEdit from './NewsEdit';
 
 const News = () => {
   return (
     <div>
-      noticias
+      <Header/>
       <Routes>
         <Route path="criar" element={<NewsCreate/>} />
-        <Route path="criar" element={<NewsEdit/>} />
+        <Route path="editar" element={<NewsEdit/>} />
       </Routes>
     </div>
   )
