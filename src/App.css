@@ -2,6 +2,9 @@
 
 *{
   box-sizing: border-box;
+  font-family: 'Poppins', Helvetica, sans-serif;
+	font-size: 100%;
+  color: var(--color-second);
   --color-first: #13161B;
   --color-second: #fff;
   --color-third: #6be067;
@@ -11,9 +14,6 @@
 }
 
 body{
-  font-family: 'Poppins', Helvetica, sans-serif;
-	font-size: 100%;
-  color: var(--color-second);
   background-color: var(--color-first);
 }
 
@@ -35,19 +35,15 @@ img{
 
 a{
   text-decoration: none;
+  color: var(--color-second);
 }
 
 button{
-	display: block;
-	font-size: 1.125rem;
-	text-align: center;
-  color: var(--color-second);
-  border: 1px solid;
-	border-radius: 0.375rem;
-	cursor: pointer;
-	padding: 0.8rem 1.2rem;
-  min-width: 8rem;
-	transition: .2s;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
 }
 
 .container{
