@@ -8,17 +8,59 @@
   grid-template-columns: 1fr repeat(3, auto);
   gap: 6px;
   align-items: center;
+  position: relative;
 }
 
-.wrapper > *:nth-last-child(-n+3){
+.itemHeader{
   padding: 0 5px;
   cursor: pointer;
 }
 
-.wrapper > *:nth-last-child(-n+3) svg{
+.itemHeader svg{
   vertical-align: middle;
 }
 
-.wrapper > *:nth-last-child(-n+3):hover svg{
+.itemHeader:hover svg{
   fill: var(--color-third);
+}
+
+.nav{
+  display: none;
+  position: absolute;
+  top: 67px;
+  right: 10px;
+  padding: 0.5rem 1rem;
+  width: 180px;
+  background: var(--color-fourth);
+  border-radius: 0.375rem;
+}
+
+.nav::before{
+  content: '';
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-bottom: 10px solid var(--color-fourth);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  position: absolute;
+  top: -10px;
+  right: 10px;
+}
+
+.nav > *{
+  display: block;
+  padding: 0.5rem ;
+}
+
+.nav > * ~ *{
+  border-top: 2px solid var(--color-first);
+}
+
+.nav > *:hover{
+  color: var(--color-third);
+}
+
+.nav > button{
+  width: 100%;
 }
