@@ -25,8 +25,8 @@ const Header = () => {
         {
           active && 
           <Submenu id="submenuUser" setActive={setActive}>
-            <Link to=''>Suas noticias</Link>
-            <Link to='estatisticas'>Estatisticas</Link>
+            <Link to=''>Minhas noticias</Link>
+            <button>Tema: escuro</button>
             <button onClick={signOut}>Sair</button>
           </Submenu>
         }
