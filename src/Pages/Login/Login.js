@@ -10,9 +10,7 @@ import Logo from '../../Components/Logo/Logo';
 const Login = () => {
   const username = useForm();
   const password = useForm();
-  const {signIn, loading, error, login} = React.useContext(AuthContext);
-
-  console.log(login);
+  const {signIn, loading, error} = React.useContext(AuthContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
