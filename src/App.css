@@ -52,6 +52,19 @@ button{
   padding: 0 1rem;
 }
 
+.containerMain{
+  padding-top: 3.75rem;
+}
+
+.title{
+  font-size: 1.875rem;
+  font-weight: bold;
+}
+
+.subtitle{
+  font-size: 1.125rem;
+}
+
 .animeRight{
   animation: showRight .5s forwards;
 }
