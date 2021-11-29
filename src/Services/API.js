@@ -20,3 +20,13 @@ export const SIGN_OUT = (token) => (
     }
   }
 )
+
+export const NEWS_GET = () => (
+  {
+    url: `${url}/noticias`,
+    options: {
+      method: "GET",
+      cache: "no-store",
+    }
+  }
+)
