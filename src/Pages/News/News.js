@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Header from '../../Components/Header/Header';
 import NewsCreate from './NewsCreate';
 import NewsEdit from './NewsEdit';
-import NewsUser from './NewsUser';
+import NewsFeed from './NewsFeed';
 
 const News = () => {
   return (
@@ -11,7 +11,7 @@ const News = () => {
       <Header/>
       <main className='container containerMain'>
         <Routes>
-          <Route path="/" element={<NewsUser/>} />
+          <Route path="/" element={<NewsFeed/>} />
           <Route path="criar" element={<NewsCreate/>} />
           <Route path="editar" element={<NewsEdit/>} />
         </Routes>
