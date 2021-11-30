@@ -3,7 +3,7 @@ import styles from './Header.module.css';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Hooks/useAuth';
 import Logo from '../Logo/Logo';
-import Submenu from '../Submenu/Submenu';
+import ListOptions from '../ListOptions/ListOptions';
 import {ReactComponent as  Magnifier} from '../../Assets/magnifier.svg';
 import {ReactComponent as Sun} from '../../Assets/sun.svg';
 import {ReactComponent as User} from '../../Assets/user.svg';
@@ -15,23 +15,23 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div className={`container ${styles.wrapper}`}>
+      <nav className={`container ${styles.wrapper}`}>
         <Link to="/noticias"> <Logo /> </Link>
 
         <Link to="pesquisa" className={styles.itemHeader}><Magnifier/></Link>
         <div className={styles.itemHeader}><Sun/></div>
-        <div className={styles.itemHeader} onClick={() => {setActive(!active)}} aria-controls="submenuUser"><User/></div>
+        <div className={styles.itemHeader} onClick={() => {setActive(!active)}} aria-controls="listOptionsUser"><User/></div>
         
         {
           active && 
-          <Submenu id="submenuUser" setActive={setActive}>
-            <Link to=''>Minhas noticias</Link>
-            <button>Tema: escuro</button>
-            <button onClick={signOut}>Sair</button>
-          </Submenu>
+          <ListOptions id="listOptionsUser" setActive={setActive} classOptions="listOptionsUser">
+            <li><Link to=''>Minhas noticias</Link></li>
+            <li><button>Tema: escuro</button></li>
+            <li><button onClick={signOut}>Sair</button></li>
+          </ListOptions>
         }
         
-      </div>
+      </nav>
     </header>
   )
 }
