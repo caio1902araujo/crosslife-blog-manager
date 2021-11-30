@@ -1,7 +1,10 @@
+import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from './Pages/Login/Login';
 import { AuthProvider } from './Hooks/useAuth';
+import ProtectedRoute from './Helper/ProtectedRoute/ProtectedRoute';
+import Login from './Pages/Login/Login';
+import News from './Pages/News/News';
 
 function App() {
   return (
@@ -10,6 +13,8 @@ function App() {
         <AuthProvider>
           <Routes>
             <Route path="/" element={<Login/>}/>
+            
+            <Route path="noticias/*" element={<ProtectedRoute component={<News/>}/>}/>
           </Routes>
         </AuthProvider>
       </BrowserRouter>

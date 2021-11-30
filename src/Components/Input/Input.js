@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Input.module.css';
-import Error from '../../Helper/Error';
+import ErrorPrimary from '../../Helper/Error/ErrorPrimary';
 
 const Input = ({label, id, type, value, error, onChange, onBlur}) => {
   return (
@@ -8,7 +8,7 @@ const Input = ({label, id, type, value, error, onChange, onBlur}) => {
       <label htmlFor={id} className={styles.label}>{label}</label>
       <input type={type} id={id} name={id} className={styles.input} value={value} onChange={onChange} onBlur={onBlur}/>
 
-      <Error error={error} errorStyle={"errorPrimary"}/>
+      <ErrorPrimary error={error}/>
     </div>
   )
 }

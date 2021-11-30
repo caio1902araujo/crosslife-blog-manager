@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './Login.module.css';
-import Input from '../../Components/form/Input';
-import Button from '../../Components/form/Button';
-import useForm from '../../Hooks/useForm';
 import { AuthContext } from '../../Hooks/useAuth';
-import Error from '../../Helper/Error';
+import useForm from '../../Hooks/useForm';
+import ErrorSecondary from '../../Helper/Error/ErrorSecondary';
+import Input from '../../Components/Input/Input';
+import ButtonSecondary from '../../Components/Button/ButtonSecondary';
+import Logo from '../../Components/Logo/Logo';
 
 const Login = () => {
   const username = useForm();
@@ -20,17 +21,17 @@ const Login = () => {
 
   return (
     <div className={styles.wrapper}>
-      <h1 className="logo">Cross<span className="green">life</span></h1>
+      <Logo/>
       <form onSubmit={handleSubmit}>
         <Input label="Usuário" id="username" type="text" {...username}/>
         <Input label="Senha" id="password" type="password" {...password}/>
         {
           loading ?
-          <Button styleButton="buttonSecondary" disabled>Carregando...</Button> :
-          <Button styleButton="buttonSecondary">Entrar</Button>
+          <ButtonSecondary disabled>Carregando...</ButtonSecondary> :
+          <ButtonSecondary>Entrar</ButtonSecondary>
         }
       </form>
-      <Error error={error} errorStyle={"errorSecondary"}/>
+      <ErrorSecondary error={error} />
     </div>
   )
 }
