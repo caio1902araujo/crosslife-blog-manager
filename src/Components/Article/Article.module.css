@@ -11,6 +11,18 @@
 	transform: translateY(-4px);
 }
 
+.article > .moreOptions{
+	opacity: 0;
+	position: absolute;
+	right: 0.5rem;
+	top: 0.5rem;
+	padding: 0.5rem;
+}
+
+.article:hover > .moreOptions{
+	opacity: 1;
+}
+
 .aticleTitle{
 	font-size: 1.25rem;
 	font-weight: bold;
@@ -35,4 +47,8 @@
 .date{
 	color: #6BE067;
 	font-weight: bold;
+}
+
+.article > .moreOptions.active{
+	opacity: 1;
 }
