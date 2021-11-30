@@ -17,7 +17,11 @@ body{
   background-color: var(--color-first);
 }
 
-html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, a, em, img, ul, li, form, label, legend, article, footer, header, nav, section, main {
+ul{
+  list-style: none;
+}
+
+html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, a, em, img, ul, li, form, label, legend, article, footer, header, nav, section, main, button {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -28,7 +32,7 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 	font-weight: normal;
 }
 
-img{
+img, svg{
   display: block;
   max-width: 100%;
 }
