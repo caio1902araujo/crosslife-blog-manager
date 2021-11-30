@@ -16,7 +16,7 @@ const Article = ({key, news}) => {
 
   return (
     <article className={styles.article}>
-      <button className={`${styles.moreOptions} ${active ? styles.active : ''}`} aria-controls="listOptionsNews" onClick={() => {setActive(!active)}}>
+      <button className={styles.moreOptions} aria-controls="listOptionsNews" onClick={() => {setActive(!active)}}>
         <Options />
         {
           active && 
