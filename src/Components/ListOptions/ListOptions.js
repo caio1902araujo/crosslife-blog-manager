@@ -2,10 +2,9 @@ import React from 'react';
 import useOutsideClick from '../../Hooks/useOutsideClick';
 import styles from './ListOptions.module.css';
 
-const ListOptions = ({children, id, setActive, classOptions}) => {
+const ListOptions = ({children, id, setActive, classOptions, buttonVisibilityControlRef}) => {
   const wrapperRef = React.useRef(null);
-  useOutsideClick(wrapperRef, setActive);
-  console.log(children)
+  useOutsideClick(wrapperRef, setActive, buttonVisibilityControlRef);
   return (
     <ul id={id} ref={wrapperRef} className={`animeRight ${styles.listOptions} ${styles[classOptions]}`}>
       {children}

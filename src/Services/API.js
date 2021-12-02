@@ -30,3 +30,12 @@ export const NEWS_GET = () => (
     }
   }
 )
+
+export function NEWS_DELETE(id){
+  return{
+    url: `${url}/noticia/${id}`,
+    options:{
+      method: 'DELETE',
+    },
+  };
+}

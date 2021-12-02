@@ -1,27 +1,9 @@
 .listOptions{
   position: absolute;
   z-index: 200;
-  background: var(--color-fourth);
   border-radius: 0.375rem;
   overflow: hidden;
   box-shadow: 0 10px 20px rgb(0 0 0 / 50%);
-}
-
-.listOptions::before{
-  content: '';
-  display: block;
-  width: 0px;
-  height: 0px;
-  border-bottom: 10px solid var(--color-fourth);
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  position: absolute;
-  top: -10px;
-  right: 5px;
-}
-
-.listOptions > li{
-  display: block;
 }
 
 .listOptions > li:hover{
@@ -36,15 +18,17 @@
 }
 
 .listOptionsUser{
-  top: 60px;
-  right: 16px;
-  width: 180px;
+  background-color: var(--color-fourth);
+  top: 3rem;
+  right: 1rem;
+  width: 11.25rem;
 }
 
 .listOptionsNews{
-  top: 30px;
-  right: 1px;
-  width: 140px;
+  background-color: var(--color-first);
+  top: 1.60rem;
+  right: 0.5rem;
+  width: 10rem;
 }
 
 .listOptionsNews > li> a,
@@ -55,6 +39,6 @@
 }
 
 .listOptionsNews svg{
-  margin-right: 6px; 
+  margin-right: 0.375rem; 
 }
 
