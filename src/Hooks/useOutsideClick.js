@@ -1,11 +1,11 @@
 import React from 'react'
 
-const useOutsideClick = (ref, setActive) => {
+const useOutsideClick = (wrapperRef, setActive, buttonVisibilityControlRef) => {
   React.useEffect(() => {
-    const buttonVisibilityControl = ref.current.previousElementSibling;
-
     const handleClickOutside = (event) =>{
-      if(!buttonVisibilityControl.contains(event.target) && !ref.current.contains(event.target)){
+      const clickOutsideButton = buttonVisibilityControlRef ? !buttonVisibilityControlRef.current.contains(event.target) : true;
+      
+      if(clickOutsideButton && !wrapperRef.current.contains(event.target)){
         setActive(false);
       }
     }
@@ -15,7 +15,7 @@ const useOutsideClick = (ref, setActive) => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     }
-  }, [ref, setActive])
+  }, [wrapperRef, setActive, buttonVisibilityControlRef])
 }
 
 export default useOutsideClick
