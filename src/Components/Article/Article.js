@@ -16,6 +16,11 @@ const Article = ({news, setModalDelete}) => {
     return date.toLocaleDateString(format);
   }
 
+  const handleChangesStates = () => {
+    setModalDelete(news);
+    setActive(false);
+  }
+
   return (
     <article className={styles.article}>
       <button className={styles.moreOptions} aria-controls={id} onClick={() => {setActive(!active)}} ref={buttonVisibilityControlRef}>
@@ -26,7 +31,7 @@ const Article = ({news, setModalDelete}) => {
         active && 
         <ListOptions id={id} classOptions="listOptionsNews" setActive={setActive} buttonVisibilityControlRef={buttonVisibilityControlRef}>
           <li><Link to="criar" className="wrapperListItem"><Pencil/> <span>Editar</span></Link></li>
-          <li><button className="wrapperListItem" onClick={() => {setModalDelete(news)}}><Trash/> <span>Deletar</span></button></li>
+          <li><button className="wrapperListItem" onClick={handleChangesStates}><Trash/> <span>Deletar</span></button></li>
         </ListOptions>
       }
       
