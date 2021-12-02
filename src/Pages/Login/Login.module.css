@@ -23,7 +23,6 @@
 
 @media (max-width: 500px){
   .wrapper{
-    max-width: 30rem;
     box-shadow: none;
     padding: 1.5rem ;
   }
