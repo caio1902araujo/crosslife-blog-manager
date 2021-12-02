@@ -11,7 +11,7 @@ import {ReactComponent as User} from '../../Assets/user.svg';
 const Header = () => {
   const {signOut} = React.useContext(AuthContext);
   const [active, setActive] = React.useState(false);
-  
+  const buttonVisibilityControlRef = React.useRef(null); 
 
   return (
     <header className={styles.header}>
@@ -20,11 +20,11 @@ const Header = () => {
 
         <Link to="pesquisa" className={styles.itemHeader}><Magnifier/></Link>
         <div className={styles.itemHeader}><Sun/></div>
-        <div className={styles.itemHeader} onClick={() => {setActive(!active)}} aria-controls="listOptionsUser"><User/></div>
+        <div className={styles.itemHeader} onClick={() => {setActive(!active)}} aria-controls="listOptionsUser" ref={buttonVisibilityControlRef}><User/></div>
         
         {
           active && 
-          <ListOptions id="listOptionsUser" setActive={setActive} classOptions="listOptionsUser">
+          <ListOptions id="listOptionsUser" setActive={setActive} classOptions="listOptionsUser" buttonVisibilityControlRef={buttonVisibilityControlRef}>
             <li><Link to=''>Minhas noticias</Link></li>
             <li><button>Tema: escuro</button></li>
             <li><button onClick={signOut}>Sair</button></li>
