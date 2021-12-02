@@ -1,12 +1,16 @@
 import React from "react";
 
-const useForm = () => {
+const useForm = (title) => {
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState("");
 
   const validate = (value) =>{
     if(value.length === 0){
       setError("Preencha esse campo");
+      return false;
+    }
+    else if(title && value !== title){
+      setError("Valor não corresponde com o título da notícia");
       return false;
     }
     else{
