@@ -5,7 +5,7 @@ import { NEWS_GET } from '../../Services/API';
 import Article from '../Article/Article';
 import ErrorSecondary from '../../Helper/Error/ErrorSecondary';
 
-const Feed = () => {
+const Feed = ({setModalDelete}) => {
   const {data, error, loading, request} = useFetch();
 
   React.useEffect(() => {
@@ -19,7 +19,7 @@ const Feed = () => {
     return (
       <section className={styles.feed}>
         {
-          data.map((news) => <Article key={news.id} news={news}/>)
+          data.map((news) => <Article key={news.id} news={news} setModalDelete={setModalDelete}/>)
         }
       </section>
     )
