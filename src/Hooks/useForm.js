@@ -1,10 +1,11 @@
 import React from "react";
 
-const useForm = (title) => {
+const useForm = (title, isRequired) => {
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState("");
 
   const validate = (value) =>{
+    if(isRequired === false) return true
     if(value.length === 0){
       setError("Preencha esse campo");
       return false;
