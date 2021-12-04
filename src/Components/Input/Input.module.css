@@ -9,7 +9,7 @@
   padding-bottom: 0.5rem;
 }
 
-.input{
+.input, .textarea{
   background: var(--color-fourth);
   outline: none;
   display: block;
@@ -21,7 +21,14 @@
   padding: 0.8rem;
 }
 
+.textarea{
+  min-height: 12.5rem;
+  resize: none;
+}
+
 .input:hover,
-.input:focus{
+.input:focus,
+.textarea:hover,
+.textarea:focus{
   border-color: var(--color-third);
 }
