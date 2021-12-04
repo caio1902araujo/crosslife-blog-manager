@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 1.875rem;
 }
 
 .groupButtons{
@@ -12,7 +13,6 @@
 .groupButtons > button ~ button{
   margin-left: 0.625rem;
 }
-
 
 @media (max-width:500px){
   .headerNews{
