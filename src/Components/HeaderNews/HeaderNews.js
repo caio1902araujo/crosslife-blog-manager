@@ -8,8 +8,8 @@ const HeaderNews = ({title, buttonPrimary, buttonSecondary}) => {
     <header className={styles.headerNews}>
       <h2 className="title">{title}</h2>
       <div className={styles.groupButtons}>
-        {buttonPrimary && <ButtonPrimary>{buttonPrimary}</ButtonPrimary>}
-        {buttonSecondary && <ButtonSecondary>{buttonSecondary}</ButtonSecondary>}
+        {buttonPrimary && <ButtonPrimary onClick={buttonPrimary.onClick}>{buttonPrimary.content}</ButtonPrimary>}
+        {buttonSecondary && <ButtonSecondary onClick={buttonSecondary.onClick}>{buttonSecondary.content}</ButtonSecondary>}
       </div>
     </header>
   )
