@@ -13,7 +13,7 @@ const News = () => {
         <Routes>
           <Route path="/" element={<NewsFeed/>} />
           <Route path="criar" element={<NewsCreate/>} />
-          <Route path="editar" element={<NewsEdit/>} />
+          <Route path="editar/:id" element={<NewsEdit/>} />
         </Routes>
       </main>
     </div>

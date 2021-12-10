@@ -5,19 +5,31 @@ import { SIGN_IN, SIGN_OUT } from "../Services/API";
 export const AuthContext = React.createContext();
 
 export const AuthProvider = ({children}) => {
-  const [login, setLogin] = React.useState(false);
+  const [login, setLogin] = React.useState(null);
   const [loading, setLoading] = React.useState(null);
   const [error, setError] = React.useState(null);
   const navigate = useNavigate();
 
+  const autoLogin = () => {
+    console.log(login)
+    const token = localStorage.getItem("token");
+    if(token){
+      setLogin(true)
+      navigate("/noticias")
+    }
+    else {
+      setLogin(false)
+    }
+  }
+
   const signOut = async () => {
+    const token = localStorage.getItem("token");
+    localStorage.removeItem("token");
     setLogin(false);
     setLoading(false);
     setError(false);
-    const token = localStorage.getItem("token");
     const {url, options} = SIGN_OUT(token);
     await fetch(url, options);
-    localStorage.removeItem("token");
     navigate("/");
   }
 
@@ -31,7 +43,7 @@ export const AuthProvider = ({children}) => {
       const {Token} = await response.json();
       window.localStorage.setItem('token', Token);
       setLogin(true);
-      navigate("/noticias")
+      navigate("/noticias");
     }
     catch(err){
       setError(err.message);
@@ -43,7 +55,7 @@ export const AuthProvider = ({children}) => {
   }
 
   return (
-    <AuthContext.Provider value={{signIn, signOut, login, loading, error}}>
+    <AuthContext.Provider value={{signIn, signOut, login, loading, error, autoLogin}}>
       {children}
     </AuthContext.Provider>
   )

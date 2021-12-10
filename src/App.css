@@ -5,11 +5,23 @@
   font-family: 'Poppins', Helvetica, sans-serif;
 	font-size: 100%;
   color: var(--color-second);
+  
+}
+
+html{
   --color-first: #13161B;
   --color-second: #fff;
   --color-third: #6be067;
   --color-fourth: #191C20;
-  --color-fifth: #d9e0e6;
+  --color-error: #f31;
+}
+
+
+html.claro{
+  --color-first: #fff;
+  --color-second: #191C20;
+  --color-third: #6be067;
+  --color-fourth: #d9e0e6;
   --color-error: #f31;
 }
 
@@ -67,10 +79,19 @@ button{
 
 .subtitle{
   font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+.active{
+  color: #6be067;
 }
 
 .animeRight{
   animation: showRight .5s forwards;
+}
+
+.description{
+  font-size: 0.875rem;
 }
 
 @keyframes showRight{

@@ -12,7 +12,7 @@ const Article = ({news, setModalDelete}) => {
   const id = `listOptionsNews${news.id}`;
 
   const convertDate = (dateAmericanFormat, format) => {
-    const date = new Date(dateAmericanFormat);
+    const date = new Date(dateAmericanFormat+"T00:00:00");
     return date.toLocaleDateString(format);
   }
 
@@ -30,7 +30,7 @@ const Article = ({news, setModalDelete}) => {
       {
         active && 
         <ListOptions id={id} classOptions="listOptionsNews" setActive={setActive} buttonVisibilityControlRef={buttonVisibilityControlRef}>
-          <li><Link to="criar" className="wrapperListItem"><Pencil/> <span>Editar</span></Link></li>
+          <li><Link to={`editar/${news.id}`} className="wrapperListItem"><Pencil/> <span>Editar</span></Link></li>
           <li><button className="wrapperListItem" onClick={handleChangesStates}><Trash/> <span>Deletar</span></button></li>
         </ListOptions>
       }

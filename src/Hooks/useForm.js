@@ -1,7 +1,7 @@
 import React from "react";
 
-const useForm = (title, isRequired) => {
-  const [value, setValue] = React.useState("");
+const useForm = (title, isRequired, valueDefault) => {
+  const [value, setValue] = React.useState(() => valueDefault?valueDefault:"");
   const [error, setError] = React.useState("");
 
   const validate = (value) =>{
@@ -30,6 +30,7 @@ const useForm = (title, isRequired) => {
   return {
     value,
     error,
+    setValue,
     onChange,
     validate: () => validate(value),
     onBlur: () => validate(value)
