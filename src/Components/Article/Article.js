@@ -1,10 +1,7 @@
 import React from 'react'
 import styles from './Article.module.css';
-import { Link } from 'react-router-dom';
-import ListOptions from '../ListOptions/ListOptions';
+import MoreOptions from '../ListOptions/MoreOptions';
 import {ReactComponent as Options} from '../../Assets/options.svg';
-import {ReactComponent as Pencil} from '../../Assets/pencil.svg';
-import {ReactComponent as Trash} from '../../Assets/trash.svg';
 
 const Article = ({news, setModalDelete}) => {
   const [active, setActive] = React.useState(false);
@@ -16,10 +13,21 @@ const Article = ({news, setModalDelete}) => {
     return date.toLocaleDateString(format);
   }
 
-  const handleChangesStates = () => {
-    setModalDelete(news);
-    setActive(false);
-  }
+  const listItems = [
+    {
+      content: "Editar",
+      icon: 'edit',
+      link: `editar/${news.id}`
+    },
+    {
+      content: "Deletar",
+      icon: 'remove',
+      method: () => {
+        setModalDelete(news);
+        setActive(false);
+      }
+    }
+  ]
 
   return (
     <article className={styles.article}>
@@ -29,10 +37,7 @@ const Article = ({news, setModalDelete}) => {
 
       {
         active && 
-        <ListOptions id={id} classOptions="listOptionsNews" setActive={setActive} buttonVisibilityControlRef={buttonVisibilityControlRef}>
-          <li><Link to="criar" className="wrapperListItem"><Pencil/> <span>Editar</span></Link></li>
-          <li><button className="wrapperListItem" onClick={handleChangesStates}><Trash/> <span>Deletar</span></button></li>
-        </ListOptions>
+        <MoreOptions id={id} listItems={listItems} setActive={setActive} buttonVisibilityControlRef={buttonVisibilityControlRef}/>
       }
       
       <h3 className={styles.aticleTitle}>{news.titulo}</h3>
