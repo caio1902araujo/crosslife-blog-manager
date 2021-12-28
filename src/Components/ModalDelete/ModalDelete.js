@@ -8,8 +8,8 @@ import ButtonSecondary from '../Button/ButtonSecondary';
 import {ReactComponent as Cross} from '../../Assets/cross.svg';
 import { NEWS_DELETE } from '../../Services/API';
 
-const ModalDelete = ({setModalDelete, modalDelete}) => {
-  const titleNews = useForm(modalDelete.titulo);
+const ModalDelete = ({setModalDelete, newsData}) => {
+  const titleNews = useForm(true, "", newsData.titulo);
   const {request} = useFetch();
   const wrapperRef = React.useRef(null);
   useOutsideClick(wrapperRef, setModalDelete, false);
@@ -17,7 +17,7 @@ const ModalDelete = ({setModalDelete, modalDelete}) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (titleNews.validate()){
-      const {url, options} = NEWS_DELETE(modalDelete.id);
+      const {url, options} = NEWS_DELETE(newsData.id);
       const {response} = await request(url, options);
       if (response.ok) window.location.reload();
     }
@@ -36,7 +36,7 @@ const ModalDelete = ({setModalDelete, modalDelete}) => {
           </p>
 
           <p className={styles.modalText}>
-            Digite <span className={styles.titleNews}>{modalDelete.titulo}</span> na caixa abaixo e clique no botão para confirmar a exclusão
+            Digite <span className={styles.titleNews}>{newsData.titulo}</span> na caixa abaixo e clique no botão para confirmar a exclusão
           </p>
 
           <form className={styles.modalForm} onSubmit={handleSubmit}>

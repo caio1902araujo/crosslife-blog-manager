@@ -17,7 +17,7 @@ const NewsFeed = () => {
       <HeaderNews title="Suas Notícias" buttonSecondary={buttonSecondaryConfig}/>
       <Feed setModalDelete={setModalDelete}/>
       {
-        modalDelete && <ModalDelete setModalDelete={setModalDelete} modalDelete={modalDelete}/>
+        modalDelete && <ModalDelete setModalDelete={setModalDelete} newsData={modalDelete}/>
       }
     </>
   )
