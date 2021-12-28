@@ -123,3 +123,16 @@ button {
     transform: translate(0, 0);
   }
 }
+
+.animeHeight {
+  animation: expandingHeight 0.2s forwards;
+}
+
+@keyframes expandingHeight {
+  from {
+    height: 0rem;
+  }
+  to {
+    height: 6.25rem;
+  }
+}
