@@ -1,10 +1,9 @@
 import React from 'react'
+import FormCreateNews from '../../Components/FormCreateNews/FormCreateNews'
 
 const NewsCreate = () => {
   return (
-    <div>
-      criar noticia
-    </div>
+    <FormCreateNews methodForm="post"/>
   )
 }
 
