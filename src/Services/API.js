@@ -39,3 +39,35 @@ export function NEWS_DELETE(id){
     },
   };
 }
+
+export const NEWS_POST = (body) => (
+  {
+    url:`${url}/noticia`,
+    options: {
+      method: "POST",
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(body),
+    }
+  }
+)
+
+export const NEWS_PUT = (id, body) => (
+  {
+    url:`${url}/noticia/${id}`,
+    options: {
+      method: "PUT",
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(body),
+    }
+  }
+)
+
+export const NEWS_GET_ID = (id) => (
+  {
+    url: `${url}/noticia/${id}`,
+    options: {
+      method: "GET",
+      cache: "no-store",
+    }
+  }
+)
