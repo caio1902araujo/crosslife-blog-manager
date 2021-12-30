@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './Article.module.css';
 import MoreOptions from '../ListOptions/MoreOptions';
 import {ReactComponent as Options} from '../../Assets/options.svg';
+import PropTypes from 'prop-types';
 
 const Article = ({news, setModalDelete}) => {
   const [active, setActive] = React.useState(false);
@@ -45,6 +46,11 @@ const Article = ({news, setModalDelete}) => {
       <span className={styles.category}>{news.categoria}</span>
     </article>
   );
+}
+
+Article.propTypes = {
+  news: PropTypes.object.isRequired,
+  setModalDelete: PropTypes.func.isRequired,
 }
 
 export default Article

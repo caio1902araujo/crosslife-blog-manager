@@ -1,11 +1,10 @@
-import React from 'react'
-import styles from './FormPartTwo.module.css'
-import HeaderNews from '../HeaderNews/HeaderNews'
-import SelectImage from '../SelectImage/SelectImage'
-import CategoryList from '../CategoryList/CategoryList'
-import PreviewImage from '../PreviewImage/PreviewImage'
-import ErrorPrimary from '../../Helper/Error/ErrorPrimary'
-
+import React from 'react';
+import styles from './FormPartTwo.module.css';
+import HeaderNews from '../HeaderNews/HeaderNews';
+import SelectImage from '../SelectImage/SelectImage';
+import CategoryList from '../CategoryList/CategoryList';
+import PreviewImage from '../PreviewImage/PreviewImage';
+import PropTypes from 'prop-types';
 
 const FormPartTwo = ({setPage, imageField, categoryField, errorCategory, setErrorCategory, handleSubmitNews}) => {
   const buttonSecondaryConfig = {
@@ -39,11 +38,19 @@ const FormPartTwo = ({setPage, imageField, categoryField, errorCategory, setErro
             Selecione uma categoria que mais se aproxime do assunto da notícia criada.
           </p>
           <CategoryList setCategory={categoryField.setCategory} category={categoryField.category} setErrorCategory={setErrorCategory} errorCategory={errorCategory}/>
-          <ErrorPrimary error={errorCategory}/> 
         </div>
       </div>
     </>
   )
+}
+
+FormPartTwo.propTypes = {
+  handleSubmitNews: PropTypes.func.isRequired,
+  categoryField: PropTypes.object.isRequired,
+  imageField: PropTypes.object.isRequired,
+  errorCategory: PropTypes.string.isRequired,
+  setErrorCategory: PropTypes.func.isRequired,
+  setPage: PropTypes.func.isRequired,
 }
 
 export default FormPartTwo

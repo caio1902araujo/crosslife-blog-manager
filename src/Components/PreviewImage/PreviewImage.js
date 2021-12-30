@@ -1,8 +1,9 @@
-import React from 'react'
-import styles from './PreviewImage.module.css'
+import React from 'react';
+import styles from './PreviewImage.module.css';
 import InputFile from '../InputFile/InputFile';
-import MoreOptions from '../ListOptions/MoreOptions'
-import {ReactComponent as Options} from '../../Assets/options.svg'
+import MoreOptions from '../ListOptions/MoreOptions';
+import {ReactComponent as Options} from '../../Assets/options.svg';
+import PropTypes from 'prop-types';
 
 const PreviewImage = ({imageFile}) => {
   const [active, setActive] = React.useState(false);
@@ -54,7 +55,11 @@ const PreviewImage = ({imageFile}) => {
         <MoreOptions id="optionsImage" listItems={listItems} setActive={setActive} buttonVisibilityControlRef={buttonVisibilityControlRef}/>
       }
     </div>
-    )
-  }
+  )
+}
+
+PreviewImage.propTypes = {
+  imageFile: PropTypes.object.isRequired,
+}
 
 export default PreviewImage

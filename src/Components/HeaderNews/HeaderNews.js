@@ -1,7 +1,8 @@
-import React from 'react'
-import styles from './HeaderNews.module.css'
-import ButtonPrimary from '../Button/ButtonPrimary'
-import ButtonSecondary from '../Button/ButtonSecondary'
+import React from 'react';
+import styles from './HeaderNews.module.css';
+import ButtonPrimary from '../Button/ButtonPrimary';
+import ButtonSecondary from '../Button/ButtonSecondary';
+import PropTypes from 'prop-types';
 
 const HeaderNews = ({title, buttonPrimary, buttonSecondary}) => {
   return (
@@ -13,6 +14,13 @@ const HeaderNews = ({title, buttonPrimary, buttonSecondary}) => {
       </div>
     </header>
   )
+}
+
+
+HeaderNews.propTypes = {
+  title: PropTypes.string.isRequired,
+  buttonPrimary: PropTypes.object,
+  buttonSecondary: PropTypes.string,
 }
 
 export default HeaderNews

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import FormPartOne from '../FormPartOne/FormPartOne'
 import FormPartTwo from '../FormPartTwo/FormPartTwo'
 import { NEWS_POST, NEWS_PUT } from '../../Services/API'
+import PropTypes from 'prop-types';
 
 const FormCreateNews = ({methodForm, dateForm}) => {
   const title = useForm(true, dateForm ? dateForm["titulo"]:"");
@@ -63,6 +64,11 @@ const FormCreateNews = ({methodForm, dateForm}) => {
     default:
       return null
   }
+}
+
+FormCreateNews.propTypes = {
+  methodForm: PropTypes.string.isRequired,
+  dateForm: PropTypes.object,
 }
 
 export default FormCreateNews

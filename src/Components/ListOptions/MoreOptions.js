@@ -4,6 +4,7 @@ import useOutsideClick from '../../Hooks/useOutsideClick';
 import { Link } from 'react-router-dom';
 import {ReactComponent as Pencil} from '../../Assets/pencil.svg';
 import {ReactComponent as Trash} from '../../Assets/trash.svg';
+import PropTypes from 'prop-types';
 
 const icons = {
   edit: <Pencil/>,
@@ -16,14 +17,21 @@ const MoreOptions = ({id, listItems, setActive, buttonVisibilityControlRef}) => 
   return (
     <ul id={id} ref={wrapperRef} className={`animeHeight ${styles.listOptions} ${styles.moreOptions}`}>
       {
-        listItems.map((item) => (
+        listItems.map((item, index) => (
           item.link ? 
-          <li><Link to={item.link}>{icons[item.icon]} <span>{item.content}</span></Link></li>:
-          <li><button onClick={item.method}>{icons[item.icon]} <span>{item.content}</span></button></li>
+          <li key={index}><Link to={item.link}>{icons[item.icon]} <span>{item.content}</span></Link></li>:
+          <li key={index}><button onClick={item.method}>{icons[item.icon]} <span>{item.content}</span></button></li>
         ))
       }
     </ul>
   )
+}
+
+MoreOptions.propTypes = {
+  id: PropTypes.string.isRequired,
+  listItems: PropTypes.array.isRequired,
+  setActive: PropTypes.func.isRequired,
+  buttonVisibilityControlRef: PropTypes.object.isRequired,
 }
 
 export default MoreOptions
