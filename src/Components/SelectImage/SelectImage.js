@@ -1,7 +1,8 @@
-import React from 'react'
-import styles from './SelectImage.module.css'
-import ButtonSecondary from '../Button/ButtonSecondary'
+import React from 'react';
+import styles from './SelectImage.module.css';
+import ButtonSecondary from '../Button/ButtonSecondary';
 import InputFile from '../InputFile/InputFile';
+import PropTypes from 'prop-types';
 
 const SelectImage = ({setImageUrl}) => {
   const inputFileRef = React.useRef();
@@ -33,6 +34,10 @@ const SelectImage = ({setImageUrl}) => {
       </ButtonSecondary>
     </div>
   )
+}
+
+SelectImage.propTypes = {
+  setImageUrl: PropTypes.func.isRequired,
 }
 
 export default SelectImage

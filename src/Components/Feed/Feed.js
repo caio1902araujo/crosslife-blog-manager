@@ -4,6 +4,7 @@ import useFetch from '../../Hooks/useFetch'
 import { NEWS_GET } from '../../Services/API';
 import Article from '../Article/Article';
 import ErrorSecondary from '../../Helper/Error/ErrorSecondary';
+import PropTypes from 'prop-types';
 
 const Feed = ({setModalDelete}) => {
   const {data, error, loading, request} = useFetch();
@@ -24,6 +25,10 @@ const Feed = ({setModalDelete}) => {
       </section>
     )
   else return null
+}
+
+Feed.propTypes = {
+  setModalDelete: PropTypes.func.isRequired,
 }
 
 export default Feed

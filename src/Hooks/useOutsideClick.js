@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const useOutsideClick = (wrapperRef, setActive, buttonVisibilityControlRef) => {
   React.useEffect(() => {
@@ -16,6 +17,12 @@ const useOutsideClick = (wrapperRef, setActive, buttonVisibilityControlRef) => {
       document.removeEventListener("mousedown", handleClickOutside);
     }
   }, [wrapperRef, setActive, buttonVisibilityControlRef])
+}
+
+useOutsideClick.propTypes = {
+  wrapperRef: PropTypes.object.isRequired,
+  buttonVisibilityControlRef: PropTypes.object,
+  setActive: PropTypes.func.isRequired,
 }
 
 export default useOutsideClick

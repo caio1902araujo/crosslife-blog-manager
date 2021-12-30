@@ -1,5 +1,5 @@
-import React from 'react'
-import FormCreateNews from '../../Components/FormCreateNews/FormCreateNews'
+import React from 'react';
+import FormCreateNews from '../../Components/FormCreateNews/FormCreateNews';
 
 const NewsCreate = () => {
   return (

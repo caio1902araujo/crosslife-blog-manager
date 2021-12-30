@@ -3,6 +3,7 @@ import styles from './ListOptions.module.css';
 import useOutsideClick from '../../Hooks/useOutsideClick';
 import { AuthContext } from '../../Hooks/useAuth';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const ListOptionsUser = ({id, setActive, buttonVisibilityControlRef}) => {
   const {signOut} = React.useContext(AuthContext);
@@ -16,6 +17,12 @@ const ListOptionsUser = ({id, setActive, buttonVisibilityControlRef}) => {
       <li><button onClick={signOut}>Sair</button></li>
     </ul>
   )
+}
+
+ListOptionsUser.propTypes = {
+  id: PropTypes.string.isRequired,
+  setActive: PropTypes.func.isRequired,
+  buttonVisibilityControlRef: PropTypes.object.isRequired,
 }
 
 export default ListOptionsUser

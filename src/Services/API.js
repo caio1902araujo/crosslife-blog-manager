@@ -1,4 +1,4 @@
-const url = "https://crosslifeapi.herokuapp.com"
+const url = "https://crosslifeapi.herokuapp.com";
 
 export const SIGN_IN = (body) => (
   {

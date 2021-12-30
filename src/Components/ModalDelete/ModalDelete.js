@@ -7,6 +7,7 @@ import Input from '../Input/Input';
 import ButtonSecondary from '../Button/ButtonSecondary';
 import {ReactComponent as Cross} from '../../Assets/cross.svg';
 import { NEWS_DELETE } from '../../Services/API';
+import PropTypes from 'prop-types';
 
 const ModalDelete = ({setModalDelete, newsData}) => {
   const titleNews = useForm(true, "", newsData.titulo);
@@ -47,6 +48,11 @@ const ModalDelete = ({setModalDelete, newsData}) => {
       </div>
     </div>
   )
+}
+
+ModalDelete.propTypes = {
+  setModalDelete: PropTypes.func.isRequired,
+  newsData: PropTypes.object.isRequired,
 }
 
 export default ModalDelete

@@ -1,6 +1,7 @@
-import React from 'react'
-import HeaderNews from '../HeaderNews/HeaderNews'
-import Input from '../Input/Input'
+import React from 'react';
+import HeaderNews from '../HeaderNews/HeaderNews';
+import Input from '../Input/Input';
+import PropTypes from 'prop-types';
 
 const FormPartOne = ({title, subtitle, paragraph, setPage}) => {
   const buttonSecondaryConfig = {
@@ -23,6 +24,13 @@ const FormPartOne = ({title, subtitle, paragraph, setPage}) => {
       
     </>
   )
+}
+
+FormPartOne.propTypes = {
+  title: PropTypes.object.isRequired,
+  subtitle: PropTypes.object.isRequired,
+  paragraph: PropTypes.object.isRequired,
+  setPage: PropTypes.func.isRequired,
 }
 
 export default FormPartOne

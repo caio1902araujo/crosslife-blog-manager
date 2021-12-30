@@ -1,8 +1,8 @@
 import React from 'react'
 import useFetch from '../../Hooks/useFetch'
-import { useParams } from 'react-router-dom'
-import { NEWS_GET_ID } from '../../Services/API'
-import FormCreateNews from '../../Components/FormCreateNews/FormCreateNews'
+import { useParams } from 'react-router-dom';
+import { NEWS_GET_ID } from '../../Services/API';
+import FormCreateNews from '../../Components/FormCreateNews/FormCreateNews';
 
 const NewsEdit = () => {
   const {id} = useParams();
