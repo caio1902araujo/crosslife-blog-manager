@@ -3,7 +3,7 @@ import styles from './Input.module.css';
 import ErrorPrimary from '../../Helper/Error/ErrorPrimary';
 import PropTypes from 'prop-types';
 
-const Input = ({label, id, type, isBox, error, value, onChange, onBlur}) => {
+const Input = ({label, id, type, isBox, onInput, error, value, onChange, onBlur}) => {
   return (
     <div className={styles.wrapper}>
       {
@@ -19,7 +19,8 @@ const Input = ({label, id, type, isBox, error, value, onChange, onBlur}) => {
           className={styles.textarea} 
           value={value} 
           onChange={onChange}
-          onBlur={onBlur} 
+          onBlur={onBlur}
+          onInput={onInput} 
         ></textarea> :
         <input type={type} 
           id={id} 

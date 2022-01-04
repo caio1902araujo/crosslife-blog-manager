@@ -20,7 +20,7 @@ const HeaderNews = ({title, buttonPrimary, buttonSecondary}) => {
 HeaderNews.propTypes = {
   title: PropTypes.string.isRequired,
   buttonPrimary: PropTypes.object,
-  buttonSecondary: PropTypes.string,
+  buttonSecondary: PropTypes.object,
 }
 
 export default HeaderNews

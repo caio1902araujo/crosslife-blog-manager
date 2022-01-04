@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-const useForm = (isRequired, valueDefaut, title) => {
+const useForm = (isRequired=true, valueDefaut="", title) => {
   const [value, setValue] = React.useState(valueDefaut);
   const [error, setError] = React.useState("");
 
@@ -35,11 +35,6 @@ const useForm = (isRequired, valueDefaut, title) => {
     validate: () => validate(value),
     onBlur: () => validate(value)
   }
-}
-
-useForm.defaultProps = {
-  isRequired: true,
-  valueDefaut: "",
 }
 
 useForm.propTypes = {
