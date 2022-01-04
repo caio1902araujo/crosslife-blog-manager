@@ -13,13 +13,18 @@ const FormPartOne = ({title, subtitle, paragraph, setPage}) => {
     }
   }
 
+  const handleResize = ({target}) => {
+    target.style.height = 'auto';
+    target.style.height = (target.scrollHeight) + 'px';
+  } 
+
   return (
     <>
       <HeaderNews title="Criando notícia" buttonSecondary={buttonSecondaryConfig}/>
       <form>
         <Input label="Título" id="title" type="text"  {...title}/>
         <Input label="Subtítulo" id="subtitle" type="text" {...subtitle}/>
-        <Input label="Corpo da notícia" id="paragraph" isBox={true} {...paragraph}/>
+        <Input label="Corpo da notícia" id="paragraph" isBox={true} onInput={handleResize} {...paragraph} />
       </form>
       
     </>
