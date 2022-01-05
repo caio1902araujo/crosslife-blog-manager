@@ -3,18 +3,17 @@ import styles from './Feed.module.css'
 import useFetch from '../../Hooks/useFetch'
 import { NEWS_GET } from '../../Services/API';
 import Article from '../Article/Article';
-import ErrorSecondary from '../../Helper/Error/ErrorSecondary';
+import Warning from '../Warning/Warning';
 import PropTypes from 'prop-types';
 
 const Feed = ({setModalDelete}) => {
   const {data, error, loading, request} = useFetch();
-
   React.useEffect(() => {
     const {url, options} = NEWS_GET();
-    request(url, options)
+    request(url, options);
   }, [request]);
 
-  if(error) return <ErrorSecondary error={error}/>
+  if(error) return <Warning />
   if(loading) return <p>Carregando...</p>
   if(data)
     return (
