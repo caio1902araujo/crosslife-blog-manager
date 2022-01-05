@@ -3,6 +3,7 @@ import styles from './Article.module.css';
 import MoreOptions from '../ListOptions/MoreOptions';
 import {ReactComponent as Options} from '../../Assets/options.svg';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Article = ({news, setModalDelete}) => {
   const [active, setActive] = React.useState(false);
@@ -41,7 +42,7 @@ const Article = ({news, setModalDelete}) => {
         <MoreOptions id={id} listItems={listItems} setActive={setActive} buttonVisibilityControlRef={buttonVisibilityControlRef}/>
       }
       
-      <h3 className={styles.aticleTitle}>{news.titulo}</h3>
+      <Link to={`editar/${news.id}`}> <h3 className={styles.aticleTitle}>{news.titulo}</h3> </Link>
       <p className={styles.aticleText}>postado em <span className={styles.date}>{convertDate(news.data_criacao, 'pt-BR')}</span></p>
       <span className={styles.category}>{news.categoria}</span>
     </article>
