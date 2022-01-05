@@ -4,7 +4,7 @@ import {ReactComponent as ErrorIcon} from '../../Assets/error.svg';
 
 const Warning = () => {
   return (
-    <section className={styles.wrapperIcon}>
+    <section className={styles.wrapperWarning}>
       <div>
         <ErrorIcon />
       </div>
