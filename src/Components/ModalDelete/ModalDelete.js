@@ -9,7 +9,7 @@ import {ReactComponent as Cross} from '../../Assets/cross.svg';
 import { NEWS_DELETE } from '../../Services/API';
 import PropTypes from 'prop-types';
 
-const ModalDelete = ({setModalDelete, newsData}) => {
+const ModalDelete = ({setModalDelete, newsData, setChangeFeed}) => {
   const titleNews = useForm(true, "", newsData.titulo);
   const {request} = useFetch();
   const wrapperRef = React.useRef(null);
@@ -20,7 +20,10 @@ const ModalDelete = ({setModalDelete, newsData}) => {
     if (titleNews.validate()){
       const {url, options} = NEWS_DELETE(newsData.id);
       const {response} = await request(url, options);
-      if (response.ok) window.location.reload();
+      if (response.ok) {
+        setModalDelete(false);
+        setChangeFeed(changeFeed => changeFeed + 1)
+      }
     }
   }
 
