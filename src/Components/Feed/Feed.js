@@ -5,7 +5,6 @@ import { NEWS_GET } from '../../Services/API';
 import Article from '../Article/Article';
 import Warning from '../Warning/Warning';
 import ModalDelete from '../ModalDelete/ModalDelete';
-// import PropTypes from 'prop-types';
 
 const Feed = () => {
   const {data, error, loading, request} = useFetch();
@@ -32,9 +31,5 @@ const Feed = () => {
     )
   else return null
 }
-
-// Feed.propTypes = {
-//   setModalDelete: PropTypes.func.isRequired,
-// }
 
 export default Feed
