@@ -2,6 +2,7 @@ import React from 'react'
 import useForm from '../../Hooks/useForm'
 import useFetch from '../../Hooks/useFetch'
 import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../Hooks/useAuth'
 import FormPartOne from '../FormPartOne/FormPartOne'
 import FormPartTwo from '../FormPartTwo/FormPartTwo'
 import { NEWS_POST, NEWS_PUT } from '../../Services/API'
@@ -16,6 +17,7 @@ const FormCreateNews = ({methodForm, dateForm}) => {
 
   const [page, setPage] = React.useState(1);
   const [error, setError] = React.useState("");
+  const { setAlert } = React.useContext(AuthContext)
   const {request} = useFetch();
   const navigate = useNavigate();
 
@@ -34,6 +36,7 @@ const FormCreateNews = ({methodForm, dateForm}) => {
   const handleSubmitNews = async () => {
     
     if(category !== ""){
+      let propsAlert;
       const curretDate = convertDate();
       const body = {
         titulo: title.value,
@@ -44,15 +47,25 @@ const FormCreateNews = ({methodForm, dateForm}) => {
         imagem: imageUrl.image ? imageUrl.image : null,
         data_criacao: curretDate,
       };
-      console.log(body);
       const {url, options} = dateFetch(methodForm, body);
       const {response} = await request(url, options);
       if (response.ok){
-        navigate("/noticias");
+        propsAlert = {
+          message: `Notícia postada com sucesso`,
+          typeAlert: "alertSuccess",
+        }
       }
+      else{
+        propsAlert = {
+          message: "Falha ao postar a notícia, erro interno",
+          typeAlert: "alertError",
+        }
+      }
+      setAlert(propsAlert);
+      navigate("/noticias");
     }
     else{
-      setError("Error: Selecione um categoria antes de postar a notícia")
+      setError("Erro: Selecione um categoria antes de postar a notícia")
     }
   }
 

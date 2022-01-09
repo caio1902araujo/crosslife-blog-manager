@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './ModalDelete.module.css';
 import useForm from '../../Hooks/useForm';
 import useFetch from '../../Hooks/useFetch';
+import { AuthContext } from '../../Hooks/useAuth';
 import useOutsideClick from '../../Hooks/useOutsideClick';
 import Input from '../Input/Input';
 import ButtonSecondary from '../Button/ButtonSecondary';
@@ -14,16 +15,29 @@ const ModalDelete = ({setModalDelete, newsData, setChangeFeed}) => {
   const {request} = useFetch();
   const wrapperRef = React.useRef(null);
   useOutsideClick(wrapperRef, setModalDelete, false);
+  const {setAlert} = React.useContext(AuthContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (titleNews.validate()){
+      let propsAlert;
       const {url, options} = NEWS_DELETE(newsData.id);
       const {response} = await request(url, options);
       if (response.ok) {
         setModalDelete(false);
-        setChangeFeed(changeFeed => changeFeed + 1)
+        setChangeFeed(changeFeed => changeFeed + 1);
+        propsAlert = {
+          message: "Notícia deletada com sucesso",
+          typeAlert: "alertSuccess",
+        }
       }
+      else{
+        propsAlert = {
+          message: "Erro ao deletar a notícia, erro interno",
+          typeAlert: "alertError",
+        }
+      }
+      setAlert(propsAlert);
     }
   }
 
@@ -44,7 +58,7 @@ const ModalDelete = ({setModalDelete, newsData, setChangeFeed}) => {
           </p>
 
           <form className={styles.modalForm} onSubmit={handleSubmit}>
-            <Input label={false} id="titleNews" type="text" {...titleNews}/>
+            <Input id="titleNews" type="text" {...titleNews}/>
             <ButtonSecondary>Exclua esta notícia</ButtonSecondary>
           </form>
         </div>
