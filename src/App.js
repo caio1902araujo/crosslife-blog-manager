@@ -8,7 +8,7 @@ import News from './Pages/News/News';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <BrowserRouter>
         <AuthProvider>
           <Routes>
