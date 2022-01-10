@@ -14,7 +14,7 @@ const Alert = ({message, typeAlert}) => {
   }
 
   return (
-    <div className={`${styles.wrapperAlert} ${styles[typeAlert]}`}>
+    <div className={`${styles.wrapperAlert} ${styles[typeAlert]} ${styles.animeTop}`}>
       <p className={styles.alertMessage}>{message}</p>
       <button className={styles.buttonClose} onClick={handleClick}>
         <Cross />
