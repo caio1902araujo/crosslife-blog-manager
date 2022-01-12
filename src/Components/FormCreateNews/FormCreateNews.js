@@ -1,11 +1,12 @@
-import React from 'react'
-import useForm from '../../Hooks/useForm'
-import useFetch from '../../Hooks/useFetch'
-import { useNavigate } from 'react-router-dom'
-import { AuthContext } from '../../Hooks/useAuth'
-import FormPartOne from '../FormPartOne/FormPartOne'
-import FormPartTwo from '../FormPartTwo/FormPartTwo'
-import { NEWS_POST, NEWS_PUT } from '../../Services/API'
+import React from 'react';
+import useForm from '../../Hooks/useForm';
+import useFetch from '../../Hooks/useFetch';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Hooks/useAuth';
+import FormPartOne from '../FormPartOne/FormPartOne';
+import FormPartTwo from '../FormPartTwo/FormPartTwo';
+import Loader from '../Loader/Loader'
+import { NEWS_POST, NEWS_PUT } from '../../Services/API';
 import PropTypes from 'prop-types';
 
 const FormCreateNews = ({methodForm, dateForm}) => {
@@ -18,7 +19,7 @@ const FormCreateNews = ({methodForm, dateForm}) => {
   const [page, setPage] = React.useState(1);
   const [error, setError] = React.useState("");
   const { setAlert } = React.useContext(AuthContext)
-  const {request} = useFetch();
+  const {request, loading} = useFetch();
   const navigate = useNavigate();
 
   const convertDate = () => {
@@ -73,7 +74,10 @@ const FormCreateNews = ({methodForm, dateForm}) => {
     case 1:
       return <FormPartOne title={title} subtitle={subtitle} paragraph={paragraph} setPage={setPage}/>
     case 2:
-      return <FormPartTwo setPage={setPage} imageField={{imageUrl, setImageUrl}} categoryField={{category, setCategory}} errorCategory={error} setErrorCategory={setError} handleSubmitNews={handleSubmitNews}/>
+      return <>
+        <FormPartTwo setPage={setPage} imageField={{imageUrl, setImageUrl}} categoryField={{category, setCategory}} errorCategory={error} setErrorCategory={setError} handleSubmitNews={handleSubmitNews}/>
+        {loading && <Loader description="Postando notícia"/>}
+      </>
     default:
       return null
   }

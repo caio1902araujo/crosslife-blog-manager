@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 
 const ModalDelete = ({setModalDelete, newsData, setChangeFeed}) => {
   const titleNews = useForm(true, "", newsData.titulo);
-  const {request} = useFetch();
+  const {request, loading} = useFetch();
   const wrapperRef = React.useRef(null);
   useOutsideClick(wrapperRef, setModalDelete, false);
   const {setAlert} = React.useContext(AuthContext);
@@ -59,7 +59,11 @@ const ModalDelete = ({setModalDelete, newsData, setChangeFeed}) => {
 
           <form className={styles.modalForm} onSubmit={handleSubmit}>
             <Input id="titleNews" type="text" {...titleNews}/>
-            <ButtonSecondary>Exclua esta notícia</ButtonSecondary>
+            {
+              loading ?
+              <ButtonSecondary disabled>Deletando...</ButtonSecondary> :
+              <ButtonSecondary>Exclua esta notícia</ButtonSecondary>
+            }
           </form>
         </div>
       </div>

@@ -5,6 +5,7 @@ import { NEWS_GET } from '../../Services/API';
 import Article from '../Article/Article';
 import Warning from '../Warning/Warning';
 import ModalDelete from '../ModalDelete/ModalDelete';
+import Loader from '../Loader/Loader';
 
 const Feed = () => {
   const {data, error, loading, request} = useFetch();
@@ -17,7 +18,7 @@ const Feed = () => {
   }, [request, changeFeed]);
 
   if(error) return <Warning />
-  if(loading) return <p>Carregando...</p>
+  if(loading) return <Loader description="Carregando notícias"/>
   if(data)
     return (
       <section className={styles.feed}>
