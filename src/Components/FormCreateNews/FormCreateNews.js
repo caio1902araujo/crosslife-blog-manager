@@ -17,7 +17,7 @@ const FormCreateNews = ({methodForm, dateForm}) => {
   const [category, setCategory] = React.useState(dateForm ? dateForm["categoria"]:"");
 
   const [page, setPage] = React.useState(1);
-  const [error, setError] = React.useState("");
+  const [errorCategory, setErrorCategory] = React.useState("");
   const { setAlert } = React.useContext(AuthContext)
   const {request, loading} = useFetch();
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ const FormCreateNews = ({methodForm, dateForm}) => {
       };
       const {url, options} = dateFetch(methodForm, body);
       const {response} = await request(url, options);
-      if (response.ok){
+      if (response && response.ok){
         propsAlert = {
           message: `Notícia postada com sucesso`,
           typeAlert: "alertSuccess",
@@ -66,7 +66,7 @@ const FormCreateNews = ({methodForm, dateForm}) => {
       navigate("/noticias");
     }
     else{
-      setError("Erro: Selecione um categoria antes de postar a notícia")
+      setErrorCategory("Erro: Selecione um categoria antes de postar a notícia")
     }
   }
 
@@ -75,7 +75,7 @@ const FormCreateNews = ({methodForm, dateForm}) => {
       return <FormPartOne title={title} subtitle={subtitle} paragraph={paragraph} setPage={setPage}/>
     case 2:
       return <>
-        <FormPartTwo setPage={setPage} imageField={{imageUrl, setImageUrl}} categoryField={{category, setCategory}} errorCategory={error} setErrorCategory={setError} handleSubmitNews={handleSubmitNews}/>
+        <FormPartTwo setPage={setPage} imageField={{imageUrl, setImageUrl}} categoryField={{category, setCategory}} errorCategory={errorCategory} setErrorCategory={setErrorCategory} handleSubmitNews={handleSubmitNews}/>
         {loading && <Loader description="Postando notícia"/>}
       </>
     default:

@@ -17,7 +17,7 @@ const Feed = () => {
     request(url, options);
   }, [request, changeFeed]);
 
-  if(error) return <Warning />
+  if(error) return <Warning title='Erro ao carregar notícias' description={error}/>
   if(loading) return <Loader description="Carregando notícias"/>
   if(data)
     return (
