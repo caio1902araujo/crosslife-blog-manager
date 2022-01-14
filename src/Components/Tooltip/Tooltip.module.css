@@ -23,8 +23,14 @@
   right: -0.375rem;
   background-color: #707070;
   white-space: nowrap;
+  transition-property: none;
+}
+
+.tooltipItem {
+  padding: 0.3125rem;
 }
 
 .tooltipItem:hover ~ .tooltipBox {
+  transition: visibility 0s 0.5s step-end;
   visibility: visible;
 }
