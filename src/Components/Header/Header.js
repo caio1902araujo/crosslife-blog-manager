@@ -3,6 +3,7 @@ import styles from './Header.module.css';
 import { Link } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import ListOptionsUser from '../ListOptions/ListOptionsUser';
+import Tooltip from '../Tooltip/Tooltip';
 import {ReactComponent as  Magnifier} from '../../Assets/magnifier.svg';
 import {ReactComponent as Sun} from '../../Assets/sun.svg';
 import {ReactComponent as User} from '../../Assets/user.svg';
@@ -16,9 +17,23 @@ const Header = () => {
       <nav className={`container ${styles.wrapper}`}>
         <Link to="/noticias"> <Logo /> </Link>
 
-        <Link to="pesquisa" className={styles.itemHeader}><Magnifier/></Link>
-        <div className={styles.itemHeader}><Sun/></div>
-        <div className={styles.itemHeader} onClick={() => {setActive(!active)}} aria-controls="listOptionsUser" ref={buttonVisibilityControlRef}><User/></div>
+        <Link to="pesquisa" className={styles.itemHeader}>
+          <Tooltip description='Pesquisar'>
+            <Magnifier/>
+          </Tooltip>
+        </Link>
+
+        <div className={styles.itemHeader}>
+          <Tooltip description='Tema'>
+            <Sun/>
+          </Tooltip>
+        </div>
+
+        <div className={styles.itemHeader} onClick={() => {setActive(!active)}} aria-controls="listOptionsUser" ref={buttonVisibilityControlRef}>
+          <Tooltip description='Usuário'>
+            <User/>
+          </Tooltip>
+        </div>
         
         {
           active && 
