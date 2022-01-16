@@ -6,10 +6,6 @@
   transition: transform 0.3s ease-out;
 }
 
-.article:hover {
-  transform: translateY(-4px);
-}
-
 .article > .moreOptions {
   position: absolute;
   right: 0.125rem;
