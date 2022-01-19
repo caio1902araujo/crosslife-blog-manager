@@ -19,10 +19,6 @@
   margin-bottom: 0.375rem;
 }
 
-.aticleTitle:hover {
-  color: var(--color-third);
-}
-
 .aticleText {
   font-size: 0.875rem;
   margin-bottom: 2.5rem;
@@ -41,4 +37,10 @@
 .date {
   color: var(--color-third);
   font-weight: bold;
+}
+
+@media (hover: hover) {
+  .aticleTitle:hover {
+    color: var(--color-third);
+  }
 }

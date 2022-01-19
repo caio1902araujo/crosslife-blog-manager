@@ -19,12 +19,14 @@
   vertical-align: middle;
 }
 
-.itemHeader:hover svg {
-  fill: var(--color-third);
-}
-
 @media (max-width: 400px) {
   .wrapper > .itemHeader:nth-child(3) {
     display: none;
+  }
+}
+
+@media (hover: hover) {
+  .itemHeader:hover svg {
+    fill: var(--color-third);
   }
 }

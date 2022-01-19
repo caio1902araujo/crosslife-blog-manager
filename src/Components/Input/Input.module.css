@@ -28,9 +28,11 @@
   overflow-y: hidden;
 }
 
-.input:hover,
-.input:focus,
-.textarea:hover,
-.textarea:focus {
-  border-color: var(--color-third);
+@media (hover: hover) {
+  .input:hover,
+  .input:focus,
+  .textarea:hover,
+  .textarea:focus {
+    border-color: var(--color-third);
+  }
 }

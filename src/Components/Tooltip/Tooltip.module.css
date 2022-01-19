@@ -15,7 +15,7 @@
 }
 
 .tooltipBox {
-  visibility: hidden;
+  opacity: 0;
   font-size: 0.75rem;
   padding: 0.375rem;
   border-radius: 0.375rem;
@@ -30,7 +30,9 @@
   padding: 0.3125rem;
 }
 
-.tooltipItem:hover ~ .tooltipBox {
-  transition: visibility 0s 1s step-end;
-  visibility: visible;
+@media (hover: hover) {
+  .tooltipItem:hover ~ .tooltipBox {
+    transition: opacity 0s 1s step-end;
+    opacity: 1;
+  }
 }
