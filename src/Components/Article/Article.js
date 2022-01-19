@@ -12,7 +12,8 @@ const Article = ({news, setModalDelete}) => {
   const id = `listOptionsNews${news.id}`;
 
   const convertDate = (dateAmericanFormat, format) => {
-    const date = new Date(dateAmericanFormat);
+    const date = new Date(dateAmericanFormat+"T00:00:00");
+    console.log(dateAmericanFormat)
     return date.toLocaleDateString(format);
   }
 
