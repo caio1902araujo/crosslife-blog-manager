@@ -35,6 +35,10 @@
     animation: animationVisibility 0s ease-in 1.2s 1 normal forwards;
     visibility: hidden;
   }
+
+  .tooltipItem:active ~ .tooltipBox {
+    display: none;
+  }
 }
 
 @keyframes animationVisibility {
