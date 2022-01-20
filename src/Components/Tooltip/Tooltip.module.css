@@ -32,12 +32,12 @@
 @media (hover: hover) {
   .tooltipItem:hover ~ .tooltipBox {
     display: block;
-    animation: teste 0s ease-in 1.2s 1 normal forwards;
+    animation: animationVisibility 0s ease-in 1.2s 1 normal forwards;
     visibility: hidden;
   }
 }
 
-@keyframes teste {
+@keyframes animationVisibility {
   to {
     visibility: visible;
   }
