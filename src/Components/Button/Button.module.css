@@ -17,14 +17,16 @@
   border-color: var(--color-third);
 }
 
-.buttonPrimary:hover,
-.buttonSecondary:hover {
-  transform: scale(1.025);
-}
-
 .buttonPrimary:disabled,
 .buttonSecondary:disabled {
   opacity: 0.5;
   cursor: progress;
   transform: scale(1);
+}
+
+@media (hover: hover) {
+  .buttonPrimary:hover,
+  .buttonSecondary:hover {
+    transform: scale(1.025);
+  }
 }

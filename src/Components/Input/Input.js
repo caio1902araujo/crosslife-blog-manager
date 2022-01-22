@@ -52,6 +52,7 @@ Input.propTypes = {
   ]),
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
+  onInput: PropTypes.func,
 }
 
 export default Input

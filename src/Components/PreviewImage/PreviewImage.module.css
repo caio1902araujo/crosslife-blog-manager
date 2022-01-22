@@ -10,11 +10,15 @@
 .buttonOptionsImage {
   width: 2.125rem;
   height: 2.125rem;
-  padding: 0.5rem;
+  padding-left: 0rem;
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
   border-radius: 0.375rem;
   background-color: var(--color-first);
   box-shadow: 0 10px 20px rgb(0 0 0 / 50%);
+}
+
+.buttonOptionsImage svg {
+  margin: 0px auto;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './PreviewImage.module.css';
 import InputFile from '../InputFile/InputFile';
 import MoreOptions from '../ListOptions/MoreOptions';
+import Tooltip from '../Tooltip/Tooltip';
 import {ReactComponent as Options} from '../../Assets/options.svg';
 import PropTypes from 'prop-types';
 
@@ -48,7 +49,9 @@ const PreviewImage = ({imageFile}) => {
     <div className={styles.wrapperPreview}>
       <img src={imageFile.imageUrl.preview} alt="capa notícia" className={styles.image}/>
       <button className={styles.buttonOptionsImage} aria-controls="optionsImage" onClick={() => {setActive(!active)}} ref={buttonVisibilityControlRef}>
-        <Options />
+        <Tooltip description='Mais Opções'>
+          <Options />
+        </Tooltip>
       </button>
       {
         active && 

@@ -1,0 +1,14 @@
+.wrapperWarning {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.contentError {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.contentError > p {
+  max-width: 31.25rem;
+}

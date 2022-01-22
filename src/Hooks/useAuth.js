@@ -8,6 +8,7 @@ export const AuthProvider = ({children}) => {
   const [login, setLogin] = React.useState(false);
   const [loading, setLoading] = React.useState(null);
   const [error, setError] = React.useState(null);
+  const [alert, setAlert] = React.useState(null);
   const navigate = useNavigate();
 
   const signOut = async () => {
@@ -43,7 +44,7 @@ export const AuthProvider = ({children}) => {
   }
 
   return (
-    <AuthContext.Provider value={{signIn, signOut, login, loading, error}}>
+    <AuthContext.Provider value={{signIn, signOut, login, loading, error, alert, setAlert}}>
       {children}
     </AuthContext.Provider>
   )

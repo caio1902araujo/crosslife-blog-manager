@@ -1,10 +1,12 @@
-import React from 'react'
-import useForm from '../../Hooks/useForm'
-import useFetch from '../../Hooks/useFetch'
-import { useNavigate } from 'react-router-dom'
-import FormPartOne from '../FormPartOne/FormPartOne'
-import FormPartTwo from '../FormPartTwo/FormPartTwo'
-import { NEWS_POST, NEWS_PUT } from '../../Services/API'
+import React from 'react';
+import useForm from '../../Hooks/useForm';
+import useFetch from '../../Hooks/useFetch';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Hooks/useAuth';
+import FormPartOne from '../FormPartOne/FormPartOne';
+import FormPartTwo from '../FormPartTwo/FormPartTwo';
+import Loader from '../Loader/Loader'
+import { NEWS_POST, NEWS_PUT } from '../../Services/API';
 import PropTypes from 'prop-types';
 
 const FormCreateNews = ({methodForm, dateForm}) => {
@@ -15,8 +17,9 @@ const FormCreateNews = ({methodForm, dateForm}) => {
   const [category, setCategory] = React.useState(dateForm ? dateForm["categoria"]:"");
 
   const [page, setPage] = React.useState(1);
-  const [error, setError] = React.useState("");
-  const {request} = useFetch();
+  const [errorCategory, setErrorCategory] = React.useState("");
+  const { setAlert } = React.useContext(AuthContext)
+  const {request, loading} = useFetch();
   const navigate = useNavigate();
 
   const convertDate = () => {
@@ -34,6 +37,7 @@ const FormCreateNews = ({methodForm, dateForm}) => {
   const handleSubmitNews = async () => {
     
     if(category !== ""){
+      let propsAlert;
       const curretDate = convertDate();
       const body = {
         titulo: title.value,
@@ -44,15 +48,25 @@ const FormCreateNews = ({methodForm, dateForm}) => {
         imagem: imageUrl.image ? imageUrl.image : null,
         data_criacao: curretDate,
       };
-      console.log(body);
       const {url, options} = dateFetch(methodForm, body);
       const {response} = await request(url, options);
-      if (response.ok){
-        navigate("/noticias");
+      if (response && response.ok){
+        propsAlert = {
+          message: `Notícia postada com sucesso`,
+          typeAlert: "alertSuccess",
+        }
       }
+      else{
+        propsAlert = {
+          message: "Falha ao postar a notícia, erro interno",
+          typeAlert: "alertError",
+        }
+      }
+      setAlert(propsAlert);
+      navigate("/noticias");
     }
     else{
-      setError("Error: Selecione um categoria antes de postar a notícia")
+      setErrorCategory("Erro: Selecione um categoria antes de postar a notícia")
     }
   }
 
@@ -60,7 +74,10 @@ const FormCreateNews = ({methodForm, dateForm}) => {
     case 1:
       return <FormPartOne title={title} subtitle={subtitle} paragraph={paragraph} setPage={setPage}/>
     case 2:
-      return <FormPartTwo setPage={setPage} imageField={{imageUrl, setImageUrl}} categoryField={{category, setCategory}} errorCategory={error} setErrorCategory={setError} handleSubmitNews={handleSubmitNews}/>
+      return <>
+        <FormPartTwo setPage={setPage} imageField={{imageUrl, setImageUrl}} categoryField={{category, setCategory}} errorCategory={errorCategory} setErrorCategory={setErrorCategory} handleSubmitNews={handleSubmitNews}/>
+        {loading && <Loader description="Postando notícia"/>}
+      </>
     default:
       return null
   }

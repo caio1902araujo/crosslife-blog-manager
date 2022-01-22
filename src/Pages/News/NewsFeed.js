@@ -1,12 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
+import { AuthContext } from '../../Hooks/useAuth';
+import Alert from '../../Components/Alert/Alert';
 import Feed from '../../Components/Feed/Feed';
 import HeaderNews from '../../Components/HeaderNews/HeaderNews';
-import ModalDelete from '../../Components/ModalDelete/ModalDelete';
 
 const NewsFeed = () => {
-  const [modalDelete, setModalDelete] = React.useState(false);
   const navigate = useNavigate();
+  const {alert} = React.useContext(AuthContext);
   const buttonSecondaryConfig = {
     content: "Criar Notícia",
     onClick: () => {navigate("criar")}
@@ -15,10 +16,8 @@ const NewsFeed = () => {
   return (
     <>
       <HeaderNews title="Suas Notícias" buttonSecondary={buttonSecondaryConfig}/>
-      <Feed setModalDelete={setModalDelete}/>
-      {
-        modalDelete && <ModalDelete setModalDelete={setModalDelete} newsData={modalDelete}/>
-      }
+      <Feed/>
+      {alert && <Alert message={alert.message} typeAlert={alert.typeAlert}/> }
     </>
   )
 }
