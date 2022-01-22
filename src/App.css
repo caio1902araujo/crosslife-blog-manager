@@ -5,11 +5,21 @@
   font-family: 'Poppins', Helvetica, sans-serif;
   font-size: 100%;
   color: var(--color-second);
+}
+
+html {
   --color-first: #13161b;
   --color-second: #fff;
   --color-third: #6be067;
   --color-fourth: #191c20;
-  --color-fifth: #d9e0e6;
+  --color-error: #f31;
+}
+
+html.light {
+  --color-first: #fff;
+  --color-second: #191c20;
+  --color-third: #6be067;
+  --color-fourth: #d9e0e6;
   --color-error: #f31;
 }
 
@@ -72,9 +82,14 @@ svg {
   max-width: 100%;
 }
 
+svg {
+  fill: var(--color-second);
+}
+
 a {
   text-decoration: none;
   color: var(--color-second);
+  display: inline-block;
 }
 
 button {
