@@ -16,6 +16,7 @@
 
 .tooltipBox {
   display: none;
+  color: #fff;
   font-size: 0.75rem;
   padding: 0.375rem;
   border-radius: 0.375rem;

@@ -10,13 +10,13 @@ import {ReactComponent as User} from '../../Assets/user.svg';
 
 const Header = () => {
   const [active, setActive] = React.useState(false);
-  const [theme, setTheme] = React.useState("escuro");
+  const [theme, setTheme] = React.useState("claro");
   const buttonVisibilityControlRef = React.useRef(null); 
 
   const changeTheme = () => {
-    const currentTheme = theme === "escuro" ? "claro" : "escuro";
+    const currentTheme = theme === "claro" ? "escuro" : "claro";
     setTheme(currentTheme);
-    document.documentElement.classList.toggle('light');
+    document.documentElement.classList.toggle('dark');
   }
 
   return (
@@ -34,7 +34,7 @@ const Header = () => {
 
         <div className={styles.itemHeader} onClick={changeTheme}>
           <Tooltip description='Tema'>
-            {theme === "escuro" ? <Theme/> : <Theme/>}
+            <Theme/>
           </Tooltip>
         </div>
 
