@@ -20,7 +20,7 @@ const Article = ({news, setModalDelete}) => {
     {
       content: "Editar",
       icon: 'edit',
-      link: `editar/${news.id}`
+      link: `/noticias/editar/${news.id}`
     },
     {
       content: "Deletar",
@@ -45,7 +45,7 @@ const Article = ({news, setModalDelete}) => {
         <MoreOptions id={id} listItems={listItems} setActive={setActive} buttonVisibilityControlRef={buttonVisibilityControlRef}/>
       }
       
-      <Link to={`editar/${news.id}`}> <h3 className={styles.aticleTitle}>{news.titulo}</h3> </Link>
+      <Link to={`/noticias/editar/${news.id}`}> <h3 className={styles.aticleTitle}>{news.titulo}</h3> </Link>
       <p className={styles.aticleText}>postado em <span className={styles.date}>{convertDate(news.data_criacao, 'pt-BR')}</span></p>
       <span className={styles.category}>{news.categoria}</span>
     </article>
