@@ -10,7 +10,7 @@ import Loader from '../Loader/Loader';
 const Feed = () => {
   const {data, error, loading, request} = useFetch();
   const [modalDelete, setModalDelete] = React.useState(false);
-  const [changeFeed, setChangeFeed] = React.useState(0)
+  const [changeFeed, setChangeFeed] = React.useState(0);
 
   React.useEffect(() => {
     const {url, options} = NEWS_GET();

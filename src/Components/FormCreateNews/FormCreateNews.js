@@ -1,6 +1,7 @@
 import React from 'react';
 import useForm from '../../Hooks/useForm';
 import useFetch from '../../Hooks/useFetch';
+import useCategory from '../../Hooks/useCategory';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Hooks/useAuth';
 import FormPartOne from '../FormPartOne/FormPartOne';
@@ -14,10 +15,9 @@ const FormCreateNews = ({methodForm, dateForm}) => {
   const subtitle = useForm(false, dateForm ? dateForm["subtitulo"]:"");
   const paragraph = useForm(true, dateForm ? dateForm["corpo"]:"");
   const [imageUrl, setImageUrl] = React.useState({});
-  const [category, setCategory] = React.useState(dateForm ? dateForm["categoria"]:"");
+  const category = useCategory(true, dateForm ? dateForm["categoria"]:"");
 
   const [page, setPage] = React.useState(1);
-  const [errorCategory, setErrorCategory] = React.useState("");
   const { setAlert } = React.useContext(AuthContext)
   const {request, loading} = useFetch();
   const navigate = useNavigate();
@@ -36,14 +36,14 @@ const FormCreateNews = ({methodForm, dateForm}) => {
 
   const handleSubmitNews = async () => {
     
-    if(category !== ""){
+    if(category.validate()){
       let propsAlert;
       const curretDate = convertDate();
       const body = {
         titulo: title.value,
         subtitulo: subtitle.value,
         corpo: paragraph.value,
-        categoria: category,
+        categoria: category.value,
         autor: "Caio Araujo",
         imagem: imageUrl.image ? imageUrl.image : null,
         data_criacao: curretDate,
@@ -65,9 +65,6 @@ const FormCreateNews = ({methodForm, dateForm}) => {
       setAlert(propsAlert);
       navigate("/noticias");
     }
-    else{
-      setErrorCategory("Erro: Selecione um categoria antes de postar a notícia")
-    }
   }
 
   switch (page){
@@ -75,7 +72,7 @@ const FormCreateNews = ({methodForm, dateForm}) => {
       return <FormPartOne title={title} subtitle={subtitle} paragraph={paragraph} setPage={setPage}/>
     case 2:
       return <>
-        <FormPartTwo setPage={setPage} imageField={{imageUrl, setImageUrl}} categoryField={{category, setCategory}} errorCategory={errorCategory} setErrorCategory={setErrorCategory} handleSubmitNews={handleSubmitNews}/>
+        <FormPartTwo setPage={setPage} imageField={{imageUrl, setImageUrl}} category={category} handleSubmitNews={handleSubmitNews}/>
         {loading && <Loader description="Postando notícia"/>}
       </>
     default:

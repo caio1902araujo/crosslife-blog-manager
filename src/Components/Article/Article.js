@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './Article.module.css';
 import MoreOptions from '../ListOptions/MoreOptions';
+import Tooltip from '../Tooltip/Tooltip';
 import { Link } from 'react-router-dom';
 import {ReactComponent as Options} from '../../Assets/options.svg';
 import PropTypes from 'prop-types';
-import Tooltip from '../Tooltip/Tooltip';
 
 const Article = ({news, setModalDelete}) => {
   const [active, setActive] = React.useState(false);

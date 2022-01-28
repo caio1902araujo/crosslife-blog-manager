@@ -1,0 +1,38 @@
+.wrapperSearch {
+  display: flex;
+  max-width: 38.75rem;
+  margin: 0 auto 30px;
+  border-radius: 0.375rem;
+  border: 1px solid transparent;
+  overflow: hidden;
+}
+
+.wrapperSearch div {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.wrapperSearch input {
+  border-radius: 0;
+}
+
+.buttonSearch {
+  background-color: var(--color-fourth);
+  padding-left: 0.9rem;
+}
+
+@media (hover: hover) {
+  .wrapperSearch input:hover,
+  .wrapperSearch input:focus {
+    border-color: transparent;
+  }
+
+  .wrapperSearch:hover,
+  .wrapperSearch:focus-within {
+    border-color: var(--color-third);
+  }
+
+  .buttonSearch:hover svg {
+    fill: var(--color-third);
+  }
+}

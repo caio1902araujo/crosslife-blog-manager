@@ -1,0 +1,24 @@
+.wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.select {
+  cursor: pointer;
+  padding: 0.625rem 0.75rem;
+  background: var(--color-fourth);
+  border-radius: 0.375rem;
+  flex-shrink: 0;
+}
+
+.text {
+  font-size: 0.875rem;
+}
+
+.select svg {
+  display: inline-block;
+  vertical-align: middle;
+  width: 0.875rem;
+  height: 0.875rem;
+  margin-left: 0.75rem;
+}
