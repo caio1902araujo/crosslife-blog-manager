@@ -20,9 +20,8 @@
 }
 
 .categoriesFlex {
-  flex-shrink: 1;
   display: flex;
-  overflow-y: auto;
+  overflow: auto;
 }
 
 .categoriesFlex .active {
