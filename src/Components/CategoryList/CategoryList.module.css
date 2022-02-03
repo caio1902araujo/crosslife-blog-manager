@@ -33,7 +33,6 @@
 .categoriesFlex > li {
   cursor: pointer;
   font-size: 0.875rem;
-  margin-right: 5px;
   padding: 0.625rem 0.75rem;
   text-transform: capitalize;
 }
