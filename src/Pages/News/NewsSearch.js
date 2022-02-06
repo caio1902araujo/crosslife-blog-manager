@@ -1,21 +1,21 @@
 import React from 'react';
-import useForm from '../../Hooks/useForm';
-import useCategory from '../../Hooks/useCategory';
+import { AuthContext } from '../../Hooks/useAuth';
+import Alert from '../../Components/Alert/Alert';
 import Feed from '../../Components/Feed/Feed';
 import Search from '../../Components/Search/Search';
 import Filters from '../../Components/Filters/Filters';
 
 const NewsSearch = () => {
-  const searchNews = useForm(false);
-  const category = useCategory(false, "todos");
+  const {alert} = React.useContext(AuthContext);
 
   return(
     <>
-      <form>
-        <Search searchNews={searchNews}/>
-        <Filters category={category} />
+      <form onSubmit={(event) => event.preventDefault()}>
+        <Search />
+        <Filters />
       </form>
       <Feed />
+      {alert && <Alert message={alert.message} typeAlert={alert.typeAlert}/> }
     </>
   );
 };

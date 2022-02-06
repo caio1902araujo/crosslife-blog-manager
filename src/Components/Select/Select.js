@@ -1,19 +1,16 @@
 import React from 'react';
 import styles from './Select.module.css';
-import useSelect from '../../Hooks/useSelect';
 import SelectOptions from '../SelectOptions/SelectOptions';
 import { ReactComponent as Arrow } from '../../Assets/arrow.svg';
 import PropTypes from 'prop-types';
 
-const Select = ({valueDefault, options}) => {
-  const refSelectText = React.useRef(null);
+const Select = ({options, text, active, setActive, handleClick}) => {
   const refVisibilityControl = React.useRef(null);
-  const {active, setActive, handleClick} = useSelect(valueDefault, options, refSelectText);
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.select} onClick={()=> setActive(!active)} ref={refVisibilityControl}>
-        <span className={styles.text} ref={refSelectText}> </span>
+        <span className={styles.text}> {text} </span>
         <Arrow />
       </div>
       {
@@ -26,8 +23,11 @@ const Select = ({valueDefault, options}) => {
 };
 
 Select.propTypes = {
-  valueDefault: PropTypes.string,
   options: PropTypes.array.isRequired,
+  text: PropTypes.string.isRequired,
+  active: PropTypes.bool.isRequired,
+  setActive: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
 }
 
 

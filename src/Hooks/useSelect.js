@@ -3,21 +3,22 @@ import PropTypes from 'prop-types';
 
 const useSelect = (valueDefault="", options) => {
   const [active, setActive] = React.useState(false);
-  const [selectText, setSelectText] = React.useState(()=>{
+  const [value, setValue] = React.useState(valueDefault);
+  const [text, setText] = React.useState(()=>{
     const { text } = options.find(option => option.value === valueDefault);
     return text;
   });
-  const [selectValue, setSelectValue] = React.useState(valueDefault);
+  
 
   const handleClick = ({target}) => {
-    setSelectValue(target.dataset.value);
-    setSelectText(target.textContent);
+    setValue(target.dataset.value);
+    setText(target.textContent);
     setActive(false);
   }
 
   return {
-    selectValue,
-    selectText,
+    value,
+    text,
     active,
     setActive,
     handleClick,
