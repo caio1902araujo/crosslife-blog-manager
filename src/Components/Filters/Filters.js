@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Filters.module.css';
 import useSelect from '../../Hooks/useSelect';
 import useCategory from '../../Hooks/useCategory';
+import useChangeParams from '../../Hooks/useChangeParams';
 import Select from '../Select/Select';
 import CategoryList from '../CategoryList/CategoryList';
 import PropTypes from 'prop-types';
@@ -27,23 +28,8 @@ const options = [
 const Filters = ({setQueryString}) => {
   const selectDate = useSelect(defautValues.order, options);
   const category = useCategory(defautValues.category, "todos");
-  
-  React.useEffect(()=>{
-    const url = new URL(window.location);
-    const params = url.searchParams;
-    const valuesParams = {
-      order: selectDate.value,
-      category: category.value,
-    }
-    
-    for(let param in valuesParams){
-      if(params.get(param) || valuesParams[param] !== defautValues[param]){
-        params.set(param, valuesParams[param]);
-        window.history.pushState({}, '', url);
-        setQueryString(params.toString());
-      }
-    }
-  },[selectDate.value, category.value, setQueryString]);
+  useChangeParams('order', selectDate.value, defautValues, setQueryString);
+  useChangeParams('category', category.value, defautValues, setQueryString);
 
   return (
     <div className={styles.filters}>
@@ -54,7 +40,7 @@ const Filters = ({setQueryString}) => {
 };
 
 Filters.propTypes = {
-  setQueryString: PropTypes.func,
+  setQueryString: PropTypes.func.isRequired,
 }
 
 export default Filters;
