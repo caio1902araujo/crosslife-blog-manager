@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import HeaderNews from '../HeaderNews/HeaderNews';
 import Input from '../Input/Input';
-import PropTypes from 'prop-types';
 
 const FormPartOne = ({title, subtitle, paragraph, setPage}) => {
   const buttonSecondaryConfig = {
-    content: "Próximo",
+    content: 'Próximo',
     onClick: () =>{
       if(title.validate() && paragraph.validate()){
         setPage(2);
@@ -20,13 +21,12 @@ const FormPartOne = ({title, subtitle, paragraph, setPage}) => {
 
   return (
     <>
-      <HeaderNews title="Criando notícia" buttonSecondary={buttonSecondaryConfig}/>
+      <HeaderNews title='Criando notícia' buttonSecondary={buttonSecondaryConfig}/>
       <form>
-        <Input label="Título" id="title" type="text"  {...title}/>
-        <Input label="Subtítulo" id="subtitle" type="text" {...subtitle}/>
-        <Input label="Corpo da notícia" id="paragraph" isBox={true} onInput={handleResize} {...paragraph} />
+        <Input label='Título' id='title' type='text'  {...title}/>
+        <Input label='Subtítulo' id='subtitle' type='text' {...subtitle}/>
+        <Input label='Corpo da notícia' id='paragraph' isBox={true} onInput={handleResize} {...paragraph} />
       </form>
-      
     </>
   )
 }
@@ -38,4 +38,4 @@ FormPartOne.propTypes = {
   setPage: PropTypes.func.isRequired,
 }
 
-export default FormPartOne
+export default FormPartOne;

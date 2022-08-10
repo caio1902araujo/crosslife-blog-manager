@@ -1,7 +1,9 @@
 import React from 'react';
-import styles from './CategoryList.module.css'
-import ErrorPrimary from '../../Helper/Error/ErrorPrimary';
 import PropTypes from 'prop-types';
+
+import ErrorPrimary from '../../Helper/Error/ErrorPrimary';
+
+import styles from './CategoryList.module.css';
 
 const CategoryList = ({listItems, classCategory, error, handleClick, checkActive}) => {
 
@@ -27,4 +29,4 @@ CategoryList.propTypes = {
   checkActive: PropTypes.func,
 }
 
-export default CategoryList
+export default CategoryList;

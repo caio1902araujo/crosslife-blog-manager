@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import useFetch from '../../Hooks/useFetch';
 
@@ -17,7 +18,7 @@ const Feed = ({params}) => {
   const [changeFeed, setChangeFeed] = React.useState(0);
 
   React.useEffect(() => {
-    let queryString = 'limit=12'
+    let queryString = 'limit=12';
     const token = window.localStorage.getItem('token');
 
     if(params && Object.keys(params).length > 0){
@@ -44,7 +45,11 @@ const Feed = ({params}) => {
     )
   }
     
-  else return null
+  else return null;
+}
+
+Feed.propTypes = {
+  params: PropTypes.object,
 }
 
 export default Feed;

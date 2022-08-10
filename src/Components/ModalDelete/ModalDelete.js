@@ -1,17 +1,21 @@
 import React from 'react';
-import styles from './ModalDelete.module.css';
+import PropTypes from 'prop-types';
+
 import useForm from '../../Hooks/useForm';
 import useFetch from '../../Hooks/useFetch';
-import { AuthContext } from '../../Hooks/useAuth';
 import useOutsideClick from '../../Hooks/useOutsideClick';
+import { AuthContext } from '../../Hooks/useAuth';
+
 import Input from '../Input/Input';
 import ButtonSecondary from '../Button/ButtonSecondary';
 import {ReactComponent as Cross} from '../../Assets/cross.svg';
+
 import { NEWS_DELETE } from '../../Services/API';
-import PropTypes from 'prop-types';
+
+import styles from './ModalDelete.module.css';
 
 const ModalDelete = ({setModalDelete, newsData, setChangeFeed}) => {
-  const titleNews = useForm(true, "", newsData.title);
+  const titleNews = useForm(true, '', newsData.title);
   const {request, loading} = useFetch();
   const wrapperRef = React.useRef(null);
   useOutsideClick(wrapperRef, setModalDelete, false);
@@ -28,14 +32,14 @@ const ModalDelete = ({setModalDelete, newsData, setChangeFeed}) => {
         setModalDelete(false);
         setChangeFeed(changeFeed => changeFeed + 1);
         propsAlert = {
-          message: "Notícia deletada com sucesso",
-          typeAlert: "alertSuccess",
+          message: 'Notícia deletada com sucesso',
+          typeAlert: 'alertSuccess',
         }
       }
       else{
         propsAlert = {
-          message: "Erro ao deletar a notícia, erro interno",
-          typeAlert: "alertError",
+          message: 'Erro ao deletar a notícia, erro interno',
+          typeAlert: 'alertError',
         }
       }
       setAlert(propsAlert);
@@ -59,7 +63,7 @@ const ModalDelete = ({setModalDelete, newsData, setChangeFeed}) => {
           </p>
 
           <form className={styles.modalForm} onSubmit={handleSubmit}>
-            <Input id="titleNews" type="text" {...titleNews}/>
+            <Input id='titleNews' type='text' {...titleNews}/>
             {
               loading ?
               <ButtonSecondary disabled>Deletando...</ButtonSecondary> :
@@ -77,4 +81,4 @@ ModalDelete.propTypes = {
   newsData: PropTypes.object.isRequired,
 }
 
-export default ModalDelete
+export default ModalDelete;

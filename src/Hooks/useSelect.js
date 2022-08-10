@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const useSelect = (valueDefault="", options) => {
+const useSelect = (valueDefault='', options) => {
   const [active, setActive] = React.useState(false);
   const [value, setValue] = React.useState(valueDefault);
   const [text, setText] = React.useState(()=>{

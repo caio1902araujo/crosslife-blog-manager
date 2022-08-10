@@ -11,12 +11,12 @@ const useOutsideClick = (wrapperRef, setActive, buttonVisibilityControlRef) => {
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     }
-  }, [wrapperRef, setActive, buttonVisibilityControlRef])
+  }, [wrapperRef, setActive, buttonVisibilityControlRef]);
 }
 
 useOutsideClick.propTypes = {
@@ -25,4 +25,4 @@ useOutsideClick.propTypes = {
   setActive: PropTypes.func.isRequired,
 }
 
-export default useOutsideClick
+export default useOutsideClick;

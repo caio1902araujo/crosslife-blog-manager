@@ -1,10 +1,13 @@
 import React from 'react';
-import styles from './ListOptions.module.css';
-import useOutsideClick from '../../Hooks/useOutsideClick';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
+import useOutsideClick from '../../Hooks/useOutsideClick';
+
 import {ReactComponent as Pencil} from '../../Assets/pencil.svg';
 import {ReactComponent as Trash} from '../../Assets/trash.svg';
-import PropTypes from 'prop-types';
+
+import styles from './ListOptions.module.css';
 
 const icons = {
   edit: <Pencil/>,
@@ -34,4 +37,4 @@ MoreOptions.propTypes = {
   buttonVisibilityControlRef: PropTypes.object.isRequired,
 }
 
-export default MoreOptions
+export default MoreOptions;

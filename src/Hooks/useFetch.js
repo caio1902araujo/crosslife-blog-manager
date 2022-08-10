@@ -14,12 +14,12 @@ const useFetch = () => {
       setLoading(true);
       response = await fetch(url, options);
       json = await response.json();
-      if(response.ok === false) throw new Error("Infelizmente tivemos problemas internos, por favor tente novamente mais tarde");
+      if(response.ok === false) throw new Error('Infelizmente tivemos problemas internos, por favor tente novamente mais tarde');
     }
     catch(e){
       json = null;
       if (e instanceof TypeError) {
-        setError("Você esta sem internet, verifique sua conexão e tente novamente");
+        setError('Você esta sem internet, verifique sua conexão e tente novamente');
       } else{
         setError(e.message);
       }

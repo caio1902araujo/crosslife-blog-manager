@@ -13,7 +13,7 @@ const Search = ({setSearchParams, params}) => {
   const regex = /^\s*$/; //regex to validate if there are any characters in the string
 
   const handleClick = () => {
-    if(searchNews.value !== "" && !(regex.test(searchNews.value))){
+    if(searchNews.value !== '' && !(regex.test(searchNews.value))){
       setSearchParams({...params, 'title': searchNews.value.trim()});
     }
   }
@@ -23,7 +23,7 @@ const Search = ({setSearchParams, params}) => {
       <button onClick={handleClick} className={styles.buttonSearch}>
         <Magnifier />
       </button>
-      <Input id="searchNews" type="text" {...searchNews} />
+      <Input id='searchNews' type='text' {...searchNews} />
     </div>
   );
 };

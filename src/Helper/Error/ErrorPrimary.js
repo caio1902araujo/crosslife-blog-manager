@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './Error.module.css';
 import PropTypes from 'prop-types';
+
+import styles from './Error.module.css';
 
 const ErrorPrimary = ({error}) => {
   return (
@@ -12,4 +13,4 @@ ErrorPrimary.propTypes = {
   error: PropTypes.string,
 }
 
-export default ErrorPrimary
+export default ErrorPrimary;

@@ -1,10 +1,12 @@
 import React from 'react';
-import styles from './PreviewImage.module.css';
+import PropTypes from 'prop-types';
+
 import InputFile from '../InputFile/InputFile';
 import MoreOptions from '../ListOptions/MoreOptions';
 import Tooltip from '../Tooltip/Tooltip';
 import {ReactComponent as Options} from '../../Assets/options.svg';
-import PropTypes from 'prop-types';
+
+import styles from './PreviewImage.module.css';
 
 const PreviewImage = ({imageFile}) => {
   const [active, setActive] = React.useState(false);
@@ -18,8 +20,8 @@ const PreviewImage = ({imageFile}) => {
       imageFile.setImageUrl({
         preview: URL.createObjectURL(file),
         image: {
-          "blob": reader.result.replace(/^data:image\/[a-z]+;base64,/, ""),
-          "nome_do_arquivo": file.name
+          'blob': reader.result.replace(/^data:image\/[a-z]+;base64,/, ''),
+          'nome_do_arquivo': file.name
         },
       });
     }
@@ -29,14 +31,14 @@ const PreviewImage = ({imageFile}) => {
   const listItems = [
     {
       content: <>
-        <InputFile id="image" name="image" refInputFile={inputFileRef} onChange={handleChange}/>
+        <InputFile id='image' name='image' refInputFile={inputFileRef} onChange={handleChange}/>
         Editar
       </>,
       icon: 'edit',
       method: () => inputFileRef.current.click(),
     },
     {
-      content: "Remover",
+      content: 'Remover',
       icon: 'remove',
       method: () => {
         setActive(false);
@@ -47,15 +49,15 @@ const PreviewImage = ({imageFile}) => {
 
   return (
     <div className={styles.wrapperPreview}>
-      <img src={imageFile.imageUrl.preview} alt="capa notícia" className={styles.image}/>
-      <button className={styles.buttonOptionsImage} aria-controls="optionsImage" onClick={() => {setActive(!active)}} ref={buttonVisibilityControlRef}>
+      <img src={imageFile.imageUrl.preview} alt='capa notícia' className={styles.image}/>
+      <button className={styles.buttonOptionsImage} aria-controls='optionsImage' onClick={() => {setActive(!active)}} ref={buttonVisibilityControlRef}>
         <Tooltip description='Mais Opções'>
           <Options />
         </Tooltip>
       </button>
       {
         active && 
-        <MoreOptions id="optionsImage" listItems={listItems} setActive={setActive} buttonVisibilityControlRef={buttonVisibilityControlRef}/>
+        <MoreOptions id='optionsImage' listItems={listItems} setActive={setActive} buttonVisibilityControlRef={buttonVisibilityControlRef}/>
       }
     </div>
   )
@@ -65,4 +67,4 @@ PreviewImage.propTypes = {
   imageFile: PropTypes.object.isRequired,
 }
 
-export default PreviewImage
+export default PreviewImage;

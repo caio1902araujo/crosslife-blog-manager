@@ -29,7 +29,7 @@ const Article = ({news, setModalDelete}) => {
         setActive(false);
       }
     }
-  ]
+  ];
 
   return (
     <article className={styles.article}>
@@ -56,4 +56,4 @@ Article.propTypes = {
   setModalDelete: PropTypes.func.isRequired,
 }
 
-export default Article
+export default Article;

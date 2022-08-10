@@ -1,13 +1,15 @@
 import React from 'react';
-import styles from './HeaderNews.module.css';
+import PropTypes from 'prop-types';
+
 import ButtonPrimary from '../Button/ButtonPrimary';
 import ButtonSecondary from '../Button/ButtonSecondary';
-import PropTypes from 'prop-types';
+
+import styles from './HeaderNews.module.css';
 
 const HeaderNews = ({title, buttonPrimary, buttonSecondary}) => {
   return (
     <header className={styles.headerNews}>
-      <h2 className="title">{title}</h2>
+      <h2 className='title'>{title}</h2>
       <div className={styles.groupButtons}>
         {buttonPrimary && <ButtonPrimary onClick={buttonPrimary.onClick}>{buttonPrimary.content}</ButtonPrimary>}
         {buttonSecondary && <ButtonSecondary onClick={buttonSecondary.onClick}>{buttonSecondary.content}</ButtonSecondary>}
@@ -23,4 +25,4 @@ HeaderNews.propTypes = {
   buttonSecondary: PropTypes.object,
 }
 
-export default HeaderNews
+export default HeaderNews;

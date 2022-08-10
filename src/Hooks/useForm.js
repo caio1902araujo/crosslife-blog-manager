@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 
-const useForm = (isRequired=true, valueDefaut="", title) => {
+const useForm = (isRequired=true, valueDefaut='', title) => {
   const [value, setValue] = React.useState(valueDefaut);
-  const [error, setError] = React.useState("");
+  const [error, setError] = React.useState('');
 
   const validate = (value) =>{
     if(isRequired === false) return true
     if(value.length === 0){
-      setError("Preencha esse campo");
+      setError('Preencha esse campo');
       return false;
     }
     else if(title && value !== title){
-      setError("Valor não corresponde com o título da notícia");
+      setError('Valor não corresponde com o título da notícia');
       return false;
     }
     else{
@@ -43,4 +43,4 @@ useForm.propTypes = {
   title: PropTypes.string,
 }
 
-export default useForm
+export default useForm;

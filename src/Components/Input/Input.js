@@ -1,7 +1,9 @@
 import React from 'react';
-import styles from './Input.module.css';
-import ErrorPrimary from '../../Helper/Error/ErrorPrimary';
 import PropTypes from 'prop-types';
+
+import ErrorPrimary from '../../Helper/Error/ErrorPrimary';
+
+import styles from './Input.module.css';
 
 const Input = ({label, id, type, isBox, onInput, error, value, onChange, onBlur}) => {
   return (
@@ -55,4 +57,4 @@ Input.propTypes = {
   onInput: PropTypes.func,
 }
 
-export default Input
+export default Input;

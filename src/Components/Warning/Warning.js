@@ -1,7 +1,9 @@
 import React from 'react';
-import styles from './Warning.module.css';
-import {ReactComponent as ErrorIcon} from '../../Assets/error.svg';
 import PropTypes from 'prop-types';
+
+import {ReactComponent as ErrorIcon} from '../../Assets/error.svg';
+
+import styles from './Warning.module.css';
 
 const Warning = ({title, description}) => {
   return (

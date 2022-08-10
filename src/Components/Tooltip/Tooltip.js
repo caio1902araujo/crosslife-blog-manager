@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './Tooltip.module.css';
 import PropTypes from 'prop-types';
+
+import styles from './Tooltip.module.css';
 
 const Tooltip = ({children, description}) => {
 
@@ -29,4 +30,4 @@ Tooltip.propTypes = {
   description: PropTypes.string.isRequired,
 }
 
-export default Tooltip
+export default Tooltip;

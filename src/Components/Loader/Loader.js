@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './Loader.module.css';
 import PropTypes from 'prop-types';
+
+import styles from './Loader.module.css';
 
 const Loader = ({description}) => {
   return (
@@ -16,4 +17,4 @@ Loader.propTypes = {
 }
 
 
-export default Loader
+export default Loader;

@@ -1,8 +1,10 @@
 import React from 'react';
-import styles from './SelectImage.module.css';
+import PropTypes from 'prop-types';
+
 import ButtonSecondary from '../Button/ButtonSecondary';
 import InputFile from '../InputFile/InputFile';
-import PropTypes from 'prop-types';
+
+import styles from './SelectImage.module.css';
 
 const SelectImage = ({setImageUrl}) => {
   const inputFileRef = React.useRef();
@@ -14,8 +16,8 @@ const SelectImage = ({setImageUrl}) => {
       setImageUrl({
         preview: URL.createObjectURL(file),
         image: {
-          "blob": reader.result.replace(/^data:image\/[a-z]+;base64,/, ""),
-          "nome_do_arquivo": file.name
+          'blob': reader.result.replace(/^data:image\/[a-z]+;base64,/, ''),
+          'nome_do_arquivo': file.name
         },
       });
     }
@@ -24,13 +26,13 @@ const SelectImage = ({setImageUrl}) => {
 
   return (
     <div className={styles.wrapperImage}>
-      <p className="description">
+      <p className='description'>
         Adicione uma foto em sua noticia para poder adicionar uma capa atrativa
       </p>
 
       <ButtonSecondary onClick={() => inputFileRef.current.click()}>
         Selecione uma imagem
-        <InputFile id="image" name="image" refInputFile={inputFileRef} onChange={handleChange}/>
+        <InputFile id='image' name='image' refInputFile={inputFileRef} onChange={handleChange}/>
       </ButtonSecondary>
     </div>
   )
@@ -40,4 +42,4 @@ SelectImage.propTypes = {
   setImageUrl: PropTypes.func.isRequired,
 }
 
-export default SelectImage
+export default SelectImage;

@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './Button.module.css';
 import PropTypes from 'prop-types';
+
+import styles from './Button.module.css';
 
 const ButtonPrimary = ({children, ...props}) => {
   return (
@@ -12,4 +13,4 @@ ButtonPrimary.propTypes = {
   children: PropTypes.any.isRequired,
 }
 
-export default ButtonPrimary
+export default ButtonPrimary;

@@ -1,11 +1,13 @@
 import React from 'react';
-import styles from './Alert.module.css';
-import { AuthContext } from '../../Hooks/useAuth';
-import { ReactComponent as Cross } from '../../Assets/cross.svg';
 import PropTypes from 'prop-types';
 
+import { AuthContext } from '../../Hooks/useAuth';
+import { ReactComponent as Cross } from '../../Assets/cross.svg';
+
+import styles from './Alert.module.css';
+
 const Alert = ({message, typeAlert}) => {
-  const {setAlert} = React.useContext(AuthContext)
+  const {setAlert} = React.useContext(AuthContext);
   const interval = setTimeout(()=>{setAlert(null)}, 3000);
 
   const handleClick = () => {
@@ -28,4 +30,4 @@ Alert.propTypes = {
   typeAlert: PropTypes.string.isRequired,
 }
 
-export default Alert
+export default Alert;

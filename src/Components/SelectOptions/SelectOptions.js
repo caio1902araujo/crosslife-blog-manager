@@ -1,7 +1,9 @@
 import React from 'react';
-import styles from './SelectOptions.module.css';
-import useOutsideClick from '../../Hooks/useOutsideClick';
 import PropTypes from 'prop-types';
+
+import useOutsideClick from '../../Hooks/useOutsideClick';
+
+import styles from './SelectOptions.module.css';
 
 const SelectOptions = ({options, handleClick, setActive, refVisibilityControl}) => {
   const wrapperRef = React.useRef(null);

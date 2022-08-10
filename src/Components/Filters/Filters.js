@@ -9,27 +9,27 @@ import CategoryList from '../CategoryList/CategoryList';
 
 import styles from './Filters.module.css';
 
-const listItems = ["todos", "academia", "esportes", "fitness", "nutrição", "receitas", "saúde"];
+const listItems = ['todos', 'academia', 'esportes', 'fitness', 'nutrição', 'receitas', 'saúde'];
 
 const defautValues = {
-  order: "DESC",
-  category: "todos"
+  order: 'DESC',
+  category: 'todos'
 };
 
 const options = [
   {
-    text: "Mais recente",
-    value: "DESC",
+    text: 'Mais recente',
+    value: 'DESC',
   },
   {
-    text: "Mais antigo",
-    value: "ASC",
+    text: 'Mais antigo',
+    value: 'ASC',
   },
 ];
 
 const Filters = ({setSearchParams, params}) => {
   const selectData = useSelect(defautValues.order, options);
-  const categoryData = useCategory(defautValues.category, "todos");
+  const categoryData = useCategory(defautValues.category, 'todos');
 
   React.useEffect(() => {
     const categoria = params.category || 'todos';
@@ -55,7 +55,7 @@ const Filters = ({setSearchParams, params}) => {
     <div className={styles.filters}>
       <CategoryList
         listItems={listItems}
-        classCategory="categoriesFlex"
+        classCategory='categoriesFlex'
         error={categoryData.error}
         handleClick={categoryData.handleClick}
         checkActive={categoryData.checkActive}
@@ -73,6 +73,7 @@ const Filters = ({setSearchParams, params}) => {
 };
 
 Filters.propTypes = {
+  params: PropTypes.object.isRequired,
   setSearchParams: PropTypes.func.isRequired,
 }
 

@@ -1,9 +1,11 @@
 import React from 'react';
-import styles from './ListOptions.module.css';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import useOutsideClick from '../../Hooks/useOutsideClick';
 import { AuthContext } from '../../Hooks/useAuth';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+
+import styles from './ListOptions.module.css';
 
 const ListOptionsUser = ({id, setActive, theme, changeTheme, buttonVisibilityControlRef}) => {
   const {signOut} = React.useContext(AuthContext);
@@ -27,4 +29,4 @@ ListOptionsUser.propTypes = {
   buttonVisibilityControlRef: PropTypes.object.isRequired,
 }
 
-export default ListOptionsUser
+export default ListOptionsUser;

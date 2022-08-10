@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const useCategory = (isRequired=true, valueDefaut="") => {
+const useCategory = (isRequired=true, valueDefaut='') => {
 
   const [value, setValue] = React.useState(valueDefaut);
-  const [error, setError] = React.useState("");
+  const [error, setError] = React.useState('');
 
   const validate = (value) => {
     if(isRequired === false) return true;
     if(value.length === 0){
-      setError("Erro: Selecione um categoria antes de postar a notícia");
+      setError('Erro: Selecione um categoria antes de postar a notícia');
       return false;
     }
     else{
@@ -20,11 +20,11 @@ const useCategory = (isRequired=true, valueDefaut="") => {
 
   const handleClick = ({target}) => {
     setValue(target.dataset.value);
-    if(error !== "") setError("");
+    if(error !== '') setError('');
   }
 
   const checkActive = (category) => {
-    return category === value ? "active" : ""
+    return category === value ? 'active' : '';
   }
 
   return {

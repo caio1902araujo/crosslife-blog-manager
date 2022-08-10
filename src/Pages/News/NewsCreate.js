@@ -1,10 +1,11 @@
 import React from 'react';
+
 import FormCreateNews from '../../Components/FormCreateNews/FormCreateNews';
 
 const NewsCreate = () => {
   return (
-    <FormCreateNews methodForm="post"/>
+    <FormCreateNews methodForm='post'/>
   )
 }
 
-export default NewsCreate
+export default NewsCreate;

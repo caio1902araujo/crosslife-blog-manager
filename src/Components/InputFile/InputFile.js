@@ -1,10 +1,11 @@
 import React from 'react';
-import styles from './InputFile.module.css';
 import PropTypes from 'prop-types';
+
+import styles from './InputFile.module.css';
 
 const InputFile = ({refInputFile, ...props}) => {
   return (
-    <input type="file" {...props} ref={refInputFile} className={styles.inputFile} />
+    <input type='file' {...props} ref={refInputFile} className={styles.inputFile} />
   )
 }
 
@@ -12,4 +13,4 @@ InputFile.propTypes = {
   refInputFile: PropTypes.object.isRequired,
 }
 
-export default InputFile
+export default InputFile;

@@ -1,8 +1,10 @@
 import React from 'react';
-import styles from './Select.module.css';
+import PropTypes from 'prop-types';
+
 import SelectOptions from '../SelectOptions/SelectOptions';
 import { ReactComponent as Arrow } from '../../Assets/arrow.svg';
-import PropTypes from 'prop-types';
+
+import styles from './Select.module.css';
 
 const Select = ({options, text, active, setActive, handleClick}) => {
   const refVisibilityControl = React.useRef(null);
@@ -29,6 +31,5 @@ Select.propTypes = {
   setActive: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired,
 }
-
 
 export default Select;
