@@ -1,11 +1,14 @@
 import React from 'react';
-import styles from './Login.module.css';
+
 import { AuthContext } from '../../Hooks/useAuth';
 import useForm from '../../Hooks/useForm';
+
 import Logo from '../../Components/Logo/Logo';
 import Input from '../../Components/Input/Input';
 import ErrorSecondary from '../../Helper/Error/ErrorSecondary';
 import ButtonSecondary from '../../Components/Button/ButtonSecondary';
+
+import styles from './Login.module.css';
 
 const Login = () => {
   const username = useForm();
@@ -23,8 +26,8 @@ const Login = () => {
     <div className={styles.wrapper}>
       <Logo/>
       <form onSubmit={handleSubmit}>
-        <Input label="Usuário" id="username" type="text" {...username}/>
-        <Input label="Senha" id="password" type="password" {...password}/>
+        <Input label='Usuário' id='username' type='text' {...username}/>
+        <Input label='Senha' id='password' type='password' {...password}/>
         {
           loading ?
           <ButtonSecondary disabled>Carregando...</ButtonSecondary> :

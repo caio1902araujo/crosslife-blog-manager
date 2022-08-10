@@ -1,73 +1,72 @@
-const url = "https://crosslifeapi.herokuapp.com";
+const url = "https://crosslife-api.herokuapp.com";
 
-export const SIGN_IN = (body) => (
+export const SIGN_IN = ({username, password}) => (
   {
-    url: `${url}/login-instrutor`,
+    url: `${url}/sessions/author`,
     options: {
       method: "POST",
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(body),
+      body: JSON.stringify({username, password}),
     }
   }
 )
 
-export const SIGN_OUT = (token) => (
+export const NEWS_GET = (token, queryString) => (
   {
-    url: `${url}/logout-instrutor`,
-    options: {
-      method: "POST",
-      headers: {Authorization: `Bearer ${token}`},
-    }
-  }
-)
-
-export const NEWS_GET = () => (
-  {
-    url: `${url}/noticias`,
+    url: `${url}/news/profile/author?${queryString}`,
     options: {
       method: "GET",
       cache: "no-store",
+      headers: {Authorization: `Bearer ${token}`}
     }
   }
 )
 
-export function NEWS_DELETE(id){
+export function NEWS_DELETE(id, token){
   return{
-    url: `${url}/noticia/${id}`,
+    url: `${url}/news/profile/author/${id}`,
     options:{
       method: 'DELETE',
+      headers: {Authorization: `Bearer ${token}`}
     },
   };
 }
 
-export const NEWS_POST = (body) => (
+export const NEWS_POST = ({body, token}) => (
   {
-    url:`${url}/noticia`,
+    url:`${url}/news/profile/author`,
     options: {
       method: "POST",
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(body),
     }
   }
 )
 
-export const NEWS_PUT = (id, body) => (
+export const NEWS_PUT = (id, body, token) => (
   {
-    url:`${url}/noticia/${id}`,
+    url:`${url}/news/profile/author/${id}`,
     options: {
       method: "PUT",
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
       body: JSON.stringify(body),
     }
   }
 )
 
-export const NEWS_GET_ID = (id) => (
+export const NEWS_GET_ID = (id, token) => (
   {
-    url: `${url}/noticia/${id}`,
+    url: `${url}/news/profile/author/${id}`,
     options: {
       method: "GET",
       cache: "no-store",
+      headers: {Authorization: `Bearer ${token}`},
     }
   }
 )

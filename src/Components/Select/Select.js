@@ -9,7 +9,7 @@ const Select = ({options, text, active, setActive, handleClick}) => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.select} onClick={()=> setActive(!active)} ref={refVisibilityControl}>
+      <div className={styles.select} onClick={() => setActive(!active)} ref={refVisibilityControl}>
         <span className={styles.text}> {text} </span>
         <Arrow />
       </div>

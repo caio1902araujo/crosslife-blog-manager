@@ -9,7 +9,6 @@ const useSelect = (valueDefault="", options) => {
     return text;
   });
   
-
   const handleClick = ({target}) => {
     setValue(target.dataset.value);
     setText(target.textContent);

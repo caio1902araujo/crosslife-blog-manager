@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import { SIGN_IN, SIGN_OUT } from "../Services/API";
+import { SIGN_IN } from "../Services/API";
 
 export const AuthContext = React.createContext();
 
 export const AuthProvider = ({children}) => {
-  const [login, setLogin] = React.useState(false);
+  const [login, setLogin] = React.useState(() => localStorage.getItem("token") ? true : false);
   const [loading, setLoading] = React.useState(null);
   const [error, setError] = React.useState(null);
   const [alert, setAlert] = React.useState(null);
@@ -15,9 +15,6 @@ export const AuthProvider = ({children}) => {
     setLogin(false);
     setLoading(false);
     setError(false);
-    const token = localStorage.getItem("token");
-    const {url, options} = SIGN_OUT(token);
-    await fetch(url, options);
     localStorage.removeItem("token");
     navigate("/");
   }
@@ -26,13 +23,13 @@ export const AuthProvider = ({children}) => {
     try{
       setError(null);
       setLoading(true);
-      const {url, options} = SIGN_IN({usuario: username, hash: password});
+      const {url, options} = SIGN_IN({username, password});
       const response = await fetch(url, options);
       if(!response.ok) throw new Error('Erro: credenciais inválidas');
-      const {Token} = await response.json();
-      window.localStorage.setItem('token', Token);
+      const { token } = await response.json();
+      window.localStorage.setItem('token', token);
       setLogin(true);
-      navigate("/noticias")
+      navigate("/noticias");
     }
     catch(err){
       setError(err.message);

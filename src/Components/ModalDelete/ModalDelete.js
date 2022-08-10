@@ -11,7 +11,7 @@ import { NEWS_DELETE } from '../../Services/API';
 import PropTypes from 'prop-types';
 
 const ModalDelete = ({setModalDelete, newsData, setChangeFeed}) => {
-  const titleNews = useForm(true, "", newsData.titulo);
+  const titleNews = useForm(true, "", newsData.title);
   const {request, loading} = useFetch();
   const wrapperRef = React.useRef(null);
   useOutsideClick(wrapperRef, setModalDelete, false);
@@ -21,7 +21,8 @@ const ModalDelete = ({setModalDelete, newsData, setChangeFeed}) => {
     event.preventDefault();
     if (titleNews.validate()){
       let propsAlert;
-      const {url, options} = NEWS_DELETE(newsData.id);
+      const token = window.localStorage.getItem('token');
+      const {url, options} = NEWS_DELETE(newsData.id, token);
       const {response} = await request(url, options);
       if (response.ok) {
         setModalDelete(false);
@@ -54,7 +55,7 @@ const ModalDelete = ({setModalDelete, newsData, setChangeFeed}) => {
           </p>
 
           <p className={styles.modalText}>
-            Digite <span className={styles.titleNews}>{newsData.titulo}</span> na caixa abaixo e clique no botão para confirmar a exclusão
+            Digite <span className={styles.titleNews}>{newsData.title}</span> na caixa abaixo e clique no botão para confirmar a exclusão
           </p>
 
           <form className={styles.modalForm} onSubmit={handleSubmit}>

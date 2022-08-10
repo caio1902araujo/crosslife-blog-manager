@@ -1,36 +1,50 @@
-import React from 'react'
-import styles from './Feed.module.css'
-import useFetch from '../../Hooks/useFetch'
-import { NEWS_GET } from '../../Services/API';
+import React from 'react';
+
+import useFetch from '../../Hooks/useFetch';
+
 import Article from '../Article/Article';
 import Warning from '../Warning/Warning';
 import ModalDelete from '../ModalDelete/ModalDelete';
 import Loader from '../Loader/Loader';
 
-const Feed = () => {
+import { NEWS_GET } from '../../Services/API';
+
+import styles from './Feed.module.css';
+
+const Feed = ({params}) => {
   const {data, error, loading, request} = useFetch();
   const [modalDelete, setModalDelete] = React.useState(false);
   const [changeFeed, setChangeFeed] = React.useState(0);
 
   React.useEffect(() => {
-    const {url, options} = NEWS_GET();
+    let queryString = 'limit=12'
+    const token = window.localStorage.getItem('token');
+
+    if(params && Object.keys(params).length > 0){
+      queryString = queryString + '&' + Object.keys(params).map(key => key + '=' + params[key]).join('&');
+    }
+
+    const {url, options} = NEWS_GET(token, queryString);
     request(url, options);
-  }, [request, changeFeed]);
+  }, [request, changeFeed, params]);
 
   if(error) return <Warning title='Erro ao carregar notícias' description={error}/>
   if(loading) return <Loader description="Carregando notícias"/>
-  if(data)
+  if(data){
+    const [articles] = data;
     return (
       <section className={styles.feed}>
         {
-          data.map((news) => <Article key={news.id} news={news} setModalDelete={setModalDelete}/>)
+          articles.map((article) => <Article key={article.id} news={article} setModalDelete={setModalDelete}/>)
         }
         {
           modalDelete && <ModalDelete setModalDelete={setModalDelete} newsData={modalDelete} setChangeFeed={setChangeFeed}/>
         }
       </section>
     )
+  }
+    
   else return null
 }
 
-export default Feed
+export default Feed;

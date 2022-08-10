@@ -12,7 +12,8 @@ const NewsEdit = () => {
 
   React.useEffect(()=>{
     const requestNews = async () => {
-      const {url, options} = NEWS_GET_ID(id);
+      const token = window.localStorage.getItem('token');
+      const {url, options} = NEWS_GET_ID(id, token);
       await request(url, options);
     } 
     requestNews();

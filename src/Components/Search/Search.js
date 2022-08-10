@@ -1,20 +1,20 @@
 import React from 'react';
-import styles from './Search.module.css';
-import useForm from '../../Hooks/useForm';
-import Input from '../Input/Input';
-import {ReactComponent as Magnifier} from '../../Assets/magnifier.svg';
 import PropTypes from 'prop-types';
 
-const Search = ({setQueryString}) => {
+import useForm from '../../Hooks/useForm';
+
+import Input from '../Input/Input';
+import {ReactComponent as Magnifier} from '../../Assets/magnifier.svg';
+
+import styles from './Search.module.css';
+
+const Search = ({setSearchParams, params}) => {
   const searchNews = useForm(false);
-  const regex = /^\s*$/;
+  const regex = /^\s*$/; //regex to validate if there are any characters in the string
 
   const handleClick = () => {
     if(searchNews.value !== "" && !(regex.test(searchNews.value))){
-      const url = new URL(window.location);
-      url.searchParams.set('search', searchNews.value.trim());
-      window.history.pushState({}, '', url);
-      setQueryString(url.searchParams.toString());
+      setSearchParams({...params, 'title': searchNews.value.trim()});
     }
   }
 
@@ -29,7 +29,7 @@ const Search = ({setQueryString}) => {
 };
 
 Search.propTypes = {
-  setQueryString: PropTypes.func,
+  setParams: PropTypes.func,
 }
 
 export default Search;

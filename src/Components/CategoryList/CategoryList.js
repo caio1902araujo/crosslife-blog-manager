@@ -4,6 +4,7 @@ import ErrorPrimary from '../../Helper/Error/ErrorPrimary';
 import PropTypes from 'prop-types';
 
 const CategoryList = ({listItems, classCategory, error, handleClick, checkActive}) => {
+
   return (
     <>
       <ul className={styles[classCategory]} onClick={handleClick}>

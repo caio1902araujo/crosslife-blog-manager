@@ -11,26 +11,21 @@ import { NEWS_POST, NEWS_PUT } from '../../Services/API';
 import PropTypes from 'prop-types';
 
 const FormCreateNews = ({methodForm, dateForm}) => {
-  const title = useForm(true, dateForm ? dateForm["titulo"]:"");
-  const subtitle = useForm(false, dateForm ? dateForm["subtitulo"]:"");
-  const paragraph = useForm(true, dateForm ? dateForm["corpo"]:"");
+  const title = useForm(true, dateForm ? dateForm["title"]:"");
+  const subtitle = useForm(false, dateForm ? dateForm["subtitle"]:"");
+  const paragraph = useForm(true, dateForm ? dateForm["body"]:"");
   const [imageUrl, setImageUrl] = React.useState({});
-  const category = useCategory(true, dateForm ? dateForm["categoria"]:"");
+  const category = useCategory(true, dateForm ? dateForm["category"]:"");
 
   const [page, setPage] = React.useState(1);
-  const { setAlert } = React.useContext(AuthContext)
+  const { setAlert } = React.useContext(AuthContext);
   const {request, loading} = useFetch();
   const navigate = useNavigate();
 
-  const convertDate = () => {
-    const date = new Date();
-    const dataString = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
-    return dataString;
-  }
-
   const dateFetch = (methodForm, body) => {
-    if (methodForm === "post") return NEWS_POST(body);
-    if (methodForm === "put") return NEWS_PUT(dateForm.id, body);
+    const token = window.localStorage.getItem('token');
+    if (methodForm === "post") return NEWS_POST({body, token});
+    if (methodForm === "put") return NEWS_PUT(dateForm.id, body, token);
     else return null;
   }
 
@@ -38,18 +33,17 @@ const FormCreateNews = ({methodForm, dateForm}) => {
     
     if(category.validate()){
       let propsAlert;
-      const curretDate = convertDate();
+
       const body = {
-        titulo: title.value,
-        subtitulo: subtitle.value,
-        corpo: paragraph.value,
-        categoria: category.value,
-        autor: "Caio Araujo",
-        imagem: imageUrl.image ? imageUrl.image : null,
-        data_criacao: curretDate,
+        title: title.value,
+        subtitle: subtitle.value || undefined,
+        body: paragraph.value,
+        category: category.value, 
       };
+
       const {url, options} = dateFetch(methodForm, body);
       const {response} = await request(url, options);
+
       if (response && response.ok){
         propsAlert = {
           message: `Notícia postada com sucesso`,
