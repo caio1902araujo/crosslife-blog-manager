@@ -32,7 +32,7 @@ const Input = ({label, id, type, isBox, onInput, error, value, onChange, onBlur}
         />
       }
 
-      <ErrorPrimary error={error}/>
+      {error && <ErrorPrimary error={error}/>}
     </div>
   )
 }

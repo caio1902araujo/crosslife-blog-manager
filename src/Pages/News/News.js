@@ -4,6 +4,7 @@ import Header from '../../Components/Header/Header';
 import NewsCreate from './NewsCreate';
 import NewsEdit from './NewsEdit';
 import NewsFeed from './NewsFeed';
+import NewsSearch from './NewsSearch';
 
 const News = () => {
   return (
@@ -14,6 +15,7 @@ const News = () => {
           <Route path="/" element={<NewsFeed/>} />
           <Route path="criar" element={<NewsCreate/>} />
           <Route path="editar/:id" element={<NewsEdit/>} />
+          <Route path="pesquisa" element={<NewsSearch/>} />
         </Routes>
       </main>
     </div>

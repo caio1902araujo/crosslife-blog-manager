@@ -34,11 +34,6 @@
   bottom: 1.875rem;
 }
 
-.date {
-  color: var(--color-third);
-  font-weight: bold;
-}
-
 @media (hover: hover) {
   .aticleTitle:hover {
     color: var(--color-third);

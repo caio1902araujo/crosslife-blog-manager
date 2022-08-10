@@ -10,7 +10,6 @@
 html.dark {
   --color-first: #13161b;
   --color-second: #fff;
-  --color-third: #6be067;
   --color-fourth: #191c20;
 }
 
@@ -118,10 +117,6 @@ button {
 .subtitle {
   font-size: 1.125rem;
   margin-bottom: 1rem;
-}
-
-.active {
-  color: var(--color-third);
 }
 
 .animeRight {

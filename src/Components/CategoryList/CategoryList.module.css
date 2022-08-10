@@ -1,21 +1,45 @@
-.categories {
+.categoriesGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin-top: 1.25rem;
 }
 
-.categories > li {
+.categoriesGrid .active {
+  color: var(--color-third);
+}
+
+.categoriesGrid > li {
   font-size: 0.875rem;
   border: 1px solid;
   border-radius: 0.375rem;
   padding: 10px 0px;
   text-align: center;
+  text-transform: capitalize;
   cursor: pointer;
 }
 
+.categoriesFlex {
+  display: flex;
+  overflow: auto;
+}
+
+.categoriesFlex .active {
+  font-weight: bold;
+  border-radius: 0.375rem;
+  background-color: var(--color-fourth);
+}
+
+.categoriesFlex > li {
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 0.625rem 0.75rem;
+  text-transform: capitalize;
+}
+
 @media (hover: hover) {
-  .categories > li:hover {
+  .categoriesGrid > li:hover,
+  .categoriesFlex > li:hover {
     color: var(--color-third);
   }
 }

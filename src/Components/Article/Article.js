@@ -1,29 +1,28 @@
 import React from 'react'
-import styles from './Article.module.css';
-import MoreOptions from '../ListOptions/MoreOptions';
-import { Link } from 'react-router-dom';
-import {ReactComponent as Options} from '../../Assets/options.svg';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import Tooltip from '../Tooltip/Tooltip';
+import MoreOptions from '../ListOptions/MoreOptions';
+import {ReactComponent as Options} from '../../Assets/options.svg';
+
+import timeInterval from '../../utils/timeInterval';
+
+import styles from './Article.module.css';
 
 const Article = ({news, setModalDelete}) => {
   const [active, setActive] = React.useState(false);
   const buttonVisibilityControlRef = React.useRef(null);
   const id = `listOptionsNews${news.id}`;
 
-  const convertDate = (dateAmericanFormat, format) => {
-    const date = new Date(dateAmericanFormat+"T00:00:00");
-    return date.toLocaleDateString(format);
-  }
-
   const listItems = [
     {
-      content: "Editar",
+      content: 'Editar',
       icon: 'edit',
-      link: `editar/${news.id}`
+      link: `/noticias/editar/${news.id}`
     },
     {
-      content: "Deletar",
+      content: 'Deletar',
       icon: 'remove',
       method: () => {
         setModalDelete(news);
@@ -45,9 +44,9 @@ const Article = ({news, setModalDelete}) => {
         <MoreOptions id={id} listItems={listItems} setActive={setActive} buttonVisibilityControlRef={buttonVisibilityControlRef}/>
       }
       
-      <Link to={`editar/${news.id}`}> <h3 className={styles.aticleTitle}>{news.titulo}</h3> </Link>
-      <p className={styles.aticleText}>postado em <span className={styles.date}>{convertDate(news.data_criacao, 'pt-BR')}</span></p>
-      <span className={styles.category}>{news.categoria}</span>
+      <Link to={`/noticias/editar/${news.id}`}> <h3 className={styles.aticleTitle}>{news.title}</h3> </Link>
+      <p className={styles.aticleText}>postado {timeInterval(news.createdAt)}</p>
+      <span className={styles.category}>{news.category}</span>
     </article>
   );
 }

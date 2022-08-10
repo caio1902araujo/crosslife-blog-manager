@@ -3,36 +3,28 @@ import styles from './CategoryList.module.css'
 import ErrorPrimary from '../../Helper/Error/ErrorPrimary';
 import PropTypes from 'prop-types';
 
-const CategoryList = ({setCategory, category, setErrorCategory, errorCategory}) => {
-  const handleClick = ({target}) => {
-    setCategory(target.dataset.value);
-    if(errorCategory !== "") setErrorCategory("");
-  }
-
-  const checkActive = (value) => {
-    return value === category ? "active" : ""
-  }
+const CategoryList = ({listItems, classCategory, error, handleClick, checkActive}) => {
 
   return (
     <>
-      <ul className={styles.categories} onClick={handleClick}>
-        <li data-value="academia" className={checkActive("academia")}>Academia</li>
-        <li data-value="esportes" className={checkActive("esportes")}>Esportes</li>
-        <li data-value="fitness" className={checkActive("fitness")}>Fitness</li>
-        <li data-value="nutrição" className={checkActive("nutrição")}>Nutrição</li>
-        <li data-value="receitas" className={checkActive("receitas")}>Receitas</li>
-        <li data-value="saúde" className={checkActive("saúde")}>Saúde</li>
+      <ul className={styles[classCategory]} onClick={handleClick}>
+        {listItems.map((listitem) => (
+          <li key={listitem} data-value={listitem} className={styles[checkActive(listitem)]}>
+            {listitem}
+          </li>
+        ))}
       </ul>
-      <ErrorPrimary error={errorCategory}/> 
+      {error && <ErrorPrimary error={error}/> }
     </>
   )
 }
 
 CategoryList.propTypes = {
-  category: PropTypes.string.isRequired,
-  errorCategory: PropTypes.string.isRequired,
-  setCategory: PropTypes.func.isRequired,
-  setErrorCategory: PropTypes.func.isRequired,
+  listItems: PropTypes.array,
+  classCategory: PropTypes.string,
+  error: PropTypes.string,
+  handleClick: PropTypes.func,
+  checkActive: PropTypes.func,
 }
 
 export default CategoryList

@@ -6,7 +6,9 @@ import CategoryList from '../CategoryList/CategoryList';
 import PreviewImage from '../PreviewImage/PreviewImage';
 import PropTypes from 'prop-types';
 
-const FormPartTwo = ({setPage, imageField, categoryField, errorCategory, setErrorCategory, handleSubmitNews}) => {
+const listItems = ["academia", "esportes", "fitness", "nutrição", "receitas", "saúde"];
+
+const FormPartTwo = ({setPage, imageField, category, handleSubmitNews}) => {
   const buttonSecondaryConfig = {
     content: "Enviar",
     onClick: handleSubmitNews
@@ -37,7 +39,7 @@ const FormPartTwo = ({setPage, imageField, categoryField, errorCategory, setErro
           <p className="description">
             Selecione uma categoria que mais se aproxime do assunto da notícia criada.
           </p>
-          <CategoryList setCategory={categoryField.setCategory} category={categoryField.category} setErrorCategory={setErrorCategory} errorCategory={errorCategory}/>
+          <CategoryList listItems={listItems} classCategory="categoriesGrid" {...category}/>
         </div>
       </div>
     </>
@@ -46,10 +48,8 @@ const FormPartTwo = ({setPage, imageField, categoryField, errorCategory, setErro
 
 FormPartTwo.propTypes = {
   handleSubmitNews: PropTypes.func.isRequired,
-  categoryField: PropTypes.object.isRequired,
+  category: PropTypes.object.isRequired,
   imageField: PropTypes.object.isRequired,
-  errorCategory: PropTypes.string.isRequired,
-  setErrorCategory: PropTypes.func.isRequired,
   setPage: PropTypes.func.isRequired,
 }
 
