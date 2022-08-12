@@ -30,6 +30,7 @@ const useForm = (isRequired=true, valueDefaut='', title) => {
 
   return {
     value,
+    setValue,
     error,
     onChange,
     validate: () => validate(value),

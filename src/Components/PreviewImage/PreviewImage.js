@@ -8,24 +8,23 @@ import {ReactComponent as Options} from '../../Assets/options.svg';
 
 import styles from './PreviewImage.module.css';
 
-const PreviewImage = ({imageFile}) => {
+const PreviewImage = ({image, setImage}) => {
   const [active, setActive] = React.useState(false);
   const inputFileRef = React.useRef();
   const buttonVisibilityControlRef = React.useRef(null);
 
   const handleChange = ({target}) => {
     const file = target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      imageFile.setImageUrl({
-        preview: URL.createObjectURL(file),
-        image: {
-          'blob': reader.result.replace(/^data:image\/[a-z]+;base64,/, ''),
-          'nome_do_arquivo': file.name
-        },
-      });
-    }
-    reader.readAsDataURL(file); 
+    setImage({
+      url: URL.createObjectURL(file),
+      raw: file,
+    });
+
+    const formData = new FormData();
+    formData.append('cover', image.raw);
+    const j = JSON.stringify(Object.fromEntries(formData.entries()));
+    console.log(j);
+    console.log(image.raw);
   }
 
   const listItems = [
@@ -42,14 +41,14 @@ const PreviewImage = ({imageFile}) => {
       icon: 'remove',
       method: () => {
         setActive(false);
-        imageFile.setImageUrl({});
+        setImage({});
       },
     }
   ]
 
   return (
     <div className={styles.wrapperPreview}>
-      <img src={imageFile.imageUrl.preview} alt='capa notícia' className={styles.image}/>
+      <img src={image.url} alt='capa notícia' className={styles.image}/>
       <button className={styles.buttonOptionsImage} aria-controls='optionsImage' onClick={() => {setActive(!active)}} ref={buttonVisibilityControlRef}>
         <Tooltip description='Mais Opções'>
           <Options />
@@ -64,7 +63,8 @@ const PreviewImage = ({imageFile}) => {
 }
 
 PreviewImage.propTypes = {
-  imageFile: PropTypes.object.isRequired,
+  image: PropTypes.object.isRequired,
+  setImage: PropTypes.func.isRequired,
 }
 
 export default PreviewImage;

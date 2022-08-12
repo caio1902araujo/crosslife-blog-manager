@@ -6,22 +6,15 @@ import InputFile from '../InputFile/InputFile';
 
 import styles from './SelectImage.module.css';
 
-const SelectImage = ({setImageUrl}) => {
+const SelectImage = ({setImage}) => {
   const inputFileRef = React.useRef();
 
   const handleChange = ({target}) => {
     const file = target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setImageUrl({
-        preview: URL.createObjectURL(file),
-        image: {
-          'blob': reader.result.replace(/^data:image\/[a-z]+;base64,/, ''),
-          'nome_do_arquivo': file.name
-        },
-      });
-    }
-    reader.readAsDataURL(file); 
+    setImage({
+      url: URL.createObjectURL(file),
+      raw: file,
+    });
   }
 
   return (
@@ -39,7 +32,7 @@ const SelectImage = ({setImageUrl}) => {
 }
 
 SelectImage.propTypes = {
-  setImageUrl: PropTypes.func.isRequired,
+  setImage: PropTypes.func.isRequired,
 }
 
 export default SelectImage;

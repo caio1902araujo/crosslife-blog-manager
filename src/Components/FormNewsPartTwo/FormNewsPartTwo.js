@@ -6,11 +6,11 @@ import SelectImage from '../SelectImage/SelectImage';
 import CategoryList from '../CategoryList/CategoryList';
 import PreviewImage from '../PreviewImage/PreviewImage';
 
-import styles from './FormPartTwo.module.css';
+import styles from './FormNewsPartTwo.module.css';
 
 const listItems = ['academia', 'esportes', 'fitness', 'nutrição', 'receitas', 'saúde'];
 
-const FormPartTwo = ({setPage, imageField, category, handleSubmitNews}) => {
+const FormNewsPartTwo = ({setPage, image, setImage, category, handleSubmitNews}) => {
   const buttonSecondaryConfig = {
     content: 'Enviar',
     onClick: handleSubmitNews
@@ -30,9 +30,9 @@ const FormPartTwo = ({setPage, imageField, category, handleSubmitNews}) => {
         <form onSubmit={(event) => event.preventDefault()}>
           <h3 className='subtitle'>Capa para a notícia</h3>
           {
-            imageField.imageUrl.preview ?
-            <PreviewImage imageFile={imageField}/> :
-            <SelectImage setImageUrl={imageField.setImageUrl}/>
+            image.url ?
+            <PreviewImage image={image} setImage={setImage}/> :
+            <SelectImage setImage={setImage}/>
           }
         </form>
 
@@ -41,18 +41,26 @@ const FormPartTwo = ({setPage, imageField, category, handleSubmitNews}) => {
           <p className='description'>
             Selecione uma categoria que mais se aproxime do assunto da notícia criada.
           </p>
-          <CategoryList listItems={listItems} classCategory='categoriesGrid' {...category}/>
+
+          <CategoryList 
+            listItems={listItems} 
+            classCategory='categoriesGrid'
+            error={category.error}
+            handleClick={category.handleClick} 
+            checkActive={category.checkActive}
+          />
         </div>
       </div>
     </>
   )
 }
 
-FormPartTwo.propTypes = {
+FormNewsPartTwo.propTypes = {
   handleSubmitNews: PropTypes.func.isRequired,
   category: PropTypes.object.isRequired,
-  imageField: PropTypes.object.isRequired,
+  image: PropTypes.object.isRequired,
+  setImage: PropTypes.func.isRequired,
   setPage: PropTypes.func.isRequired,
 }
 
-export default FormPartTwo;
+export default FormNewsPartTwo;

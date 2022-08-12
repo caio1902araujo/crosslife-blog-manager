@@ -60,6 +60,19 @@ export const NEWS_PUT = (id, body, token) => (
   }
 )
 
+export const NEWS_COVER_PATCH = (id, formData, token) => (
+  {
+    url:`${url}/news/profile/author/cover/${id}`,
+    options: {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      body: formData,
+    }
+  }
+)
+
 export const NEWS_GET_ID = (id, token) => (
   {
     url: `${url}/news/profile/author/${id}`,

@@ -29,6 +29,7 @@ const useCategory = (isRequired=true, valueDefaut='') => {
 
   return {
     value,
+    setValue,
     error,
     handleClick,
     checkActive,
