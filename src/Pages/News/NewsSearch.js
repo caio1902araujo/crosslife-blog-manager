@@ -1,7 +1,8 @@
 import React from 'react';
-import { useSearchParams } from 'react-router-dom';
 
 import { AuthContext } from '../../Hooks/useAuth';
+import useQueryParams from '../../Hooks/useQueryParams';
+import useScrollInfinite from '../../Hooks/useScrollInfinite';
 
 import Alert from '../../Components/Alert/Alert';
 import Feed from '../../Components/Feed/Feed';
@@ -10,16 +11,25 @@ import Filters from '../../Components/Filters/Filters';
 
 const NewsSearch = () => {
   const {alert} = React.useContext(AuthContext);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const params =  Object.fromEntries(searchParams.entries());
+  const {pages, setInfinite} = useScrollInfinite();
+  const [queryParams, setQueryParams] = useQueryParams();
 
   return(
     <>
       <form onSubmit={(event) => event.preventDefault()}>
-        <Search setSearchParams={setSearchParams} params={params}/>
-        <Filters setSearchParams={setSearchParams} params={params}/>
+        <Search queryParams={queryParams} setQueryParams={setQueryParams} />
+        <Filters queryParams={queryParams} setQueryParams={setQueryParams}/>
       </form>
-      <Feed params={params}/>
+      {
+        pages.map((page) => (
+          <Feed 
+            key={page}
+            page={page} 
+            queryParams={queryParams}
+            setInfinite={setInfinite}
+          />
+        ))
+      }
       {alert && <Alert message={alert.message} typeAlert={alert.typeAlert}/> }
     </>
   );

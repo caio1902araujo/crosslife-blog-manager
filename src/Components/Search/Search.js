@@ -8,13 +8,13 @@ import {ReactComponent as Magnifier} from '../../Assets/magnifier.svg';
 
 import styles from './Search.module.css';
 
-const Search = ({setSearchParams, params}) => {
-  const searchNews = useForm(false);
+const Search = ({queryParams, setQueryParams}) => {
+  const searchNews = useForm(false, queryParams.title ? queryParams.title : '');
   const regex = /^\s*$/; //regex to validate if there are any characters in the string
 
   const handleClick = () => {
     if(searchNews.value !== '' && !(regex.test(searchNews.value))){
-      setSearchParams({...params, 'title': searchNews.value.trim()});
+      setQueryParams({...queryParams, 'title': searchNews.value.trim()});
     }
   }
 
@@ -29,7 +29,8 @@ const Search = ({setSearchParams, params}) => {
 };
 
 Search.propTypes = {
-  setParams: PropTypes.func,
+  queryParams: PropTypes.object.isRequired,
+  setQueryParams: PropTypes.func.isRequired,
 }
 
 export default Search;

@@ -11,11 +11,6 @@ import styles from './Filters.module.css';
 
 const listItems = ['todos', 'academia', 'esportes', 'fitness', 'nutrição', 'receitas', 'saúde'];
 
-const defautValues = {
-  order: 'DESC',
-  category: 'todos'
-};
-
 const options = [
   {
     text: 'Mais recente',
@@ -27,26 +22,25 @@ const options = [
   },
 ];
 
-const Filters = ({setSearchParams, params}) => {
-  const selectData = useSelect(defautValues.order, options);
-  const categoryData = useCategory(defautValues.category, 'todos');
+const Filters = ({queryParams, setQueryParams}) => {
+  const order = queryParams.order ? queryParams.order : 'DESC';
+  const categoria = queryParams.category ? queryParams.category : 'todos';
+  const selectData = useSelect(order, options);
+  const categoryData = useCategory(false, categoria);
 
   React.useEffect(() => {
-    const categoria = params.category || 'todos';
-    const order = params.order || 'DESC';
-
     if(categoryData.value !== categoria){
       if(categoryData.value !== 'todos'){
-        setSearchParams({...params, 'category': categoryData.value});
+        setQueryParams({...queryParams, 'category': categoryData.value});
       }
       else{
-        delete params.category;
-        setSearchParams({...params})
+        delete queryParams.category;
+        setQueryParams({...queryParams});
       }
     }
 
     if(selectData.value !== order){
-      setSearchParams({...params, 'order': selectData.value});
+      setQueryParams({...queryParams, 'order': selectData.value});
     }
 
   }, [selectData.value, categoryData.value])
@@ -73,8 +67,9 @@ const Filters = ({setSearchParams, params}) => {
 };
 
 Filters.propTypes = {
-  params: PropTypes.object.isRequired,
-  setSearchParams: PropTypes.func.isRequired,
+  queryParams: PropTypes.object.isRequired,
+  setQueryParams: PropTypes.func.isRequired,
 }
+
 
 export default Filters;

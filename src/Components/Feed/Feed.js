@@ -12,22 +12,29 @@ import { NEWS_GET } from '../../Services/API';
 
 import styles from './Feed.module.css';
 
-const Feed = ({params}) => {
+const Feed = ({page, queryParams, setInfinite}) => {
   const {data, error, loading, request} = useFetch();
   const [modalDelete, setModalDelete] = React.useState(false);
   const [changeFeed, setChangeFeed] = React.useState(0);
 
   React.useEffect(() => {
-    let queryString = 'limit=12';
-    const token = window.localStorage.getItem('token');
 
-    if(params && Object.keys(params).length > 0){
-      queryString = queryString + '&' + Object.keys(params).map(key => key + '=' + params[key]).join('&');
-    }
+    (async () => {
+      let queryString = `limit=9&offset=${(page - 1) * 9}`;
+      const token = window.localStorage.getItem('token');
 
-    const {url, options} = NEWS_GET(token, queryString);
-    request(url, options);
-  }, [request, changeFeed, params]);
+      if(queryParams && Object.keys(queryParams).length > 0){
+        queryString = queryString + '&' + Object.keys(queryParams).map(key => key + '=' + queryParams[key]).join('&');
+      }
+      
+      const {url, options} = NEWS_GET(token, queryString);
+      const {response, json} = await request(url, options);
+
+      const infinite = (response && response.ok && json[0].length < 9) ? false : true;
+      setInfinite(infinite);
+    })();
+
+  }, [changeFeed, queryParams, page]);
 
   if(error) return <Warning title='Erro ao carregar notícias' description={error}/>
   if(loading) return <Loader description="Carregando notícias"/>
@@ -49,7 +56,9 @@ const Feed = ({params}) => {
 }
 
 Feed.propTypes = {
-  params: PropTypes.object,
+  page: PropTypes.arrayOf(PropTypes.number).isRequired,
+  setInfinite: PropTypes.func.isRequired,
+  queryParams: PropTypes.object,
 }
 
 export default Feed;
