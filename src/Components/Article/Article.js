@@ -6,8 +6,6 @@ import Tooltip from '../Tooltip/Tooltip';
 import MoreOptions from '../ListOptions/MoreOptions';
 import {ReactComponent as Options} from '../../Assets/options.svg';
 
-import timeInterval from '../../utils/timeInterval';
-
 import styles from './Article.module.css';
 
 const Article = ({news, setModalDelete}) => {
@@ -45,7 +43,7 @@ const Article = ({news, setModalDelete}) => {
       }
       
       <Link to={`/noticias/editar/${news.id}`}> <h3 className={styles.aticleTitle}>{news.title}</h3> </Link>
-      <p className={styles.aticleText}>postado {timeInterval(news.createdAt)}</p>
+      <p className={styles.aticleText}>postado em {new Date(news.createdAt).toLocaleDateString()}</p>
       <span className={styles.category}>{news.category}</span>
     </article>
   );

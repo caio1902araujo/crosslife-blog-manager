@@ -23,12 +23,12 @@ const Feed = ({page, queryParams, setInfinite}) => {
       let queryString = `limit=9&offset=${(page - 1) * 9}`;
       const token = window.localStorage.getItem('token');
 
-      if(queryParams && Object.keys(queryParams).length > 0){
+      if (queryParams && Object.keys(queryParams).length > 0) {
         queryString = queryString + '&' + Object.keys(queryParams).map(key => key + '=' + queryParams[key]).join('&');
       }
-      
-      const {url, options} = NEWS_GET(token, queryString);
-      const {response, json} = await request(url, options);
+
+      const { url, options } = NEWS_GET(token, queryString);
+      const { response, json } = await request(url, options);
 
       const infinite = (response && response.ok && json[0].length < 9) ? false : true;
       setInfinite(infinite);
@@ -36,27 +36,27 @@ const Feed = ({page, queryParams, setInfinite}) => {
 
   }, [changeFeed, queryParams, page]);
 
-  if(error) return <Warning title='Erro ao carregar notícias' description={error}/>
+  if(error) return <Warning title='Erro ao carregar notícias' description={error} svg='error'/>
   if(loading) return <Loader description="Carregando notícias"/>
   if(data){
     const [articles] = data;
-    return (
-      <section className={styles.feed}>
-        {
-          articles.map((article) => <Article key={article.id} news={article} setModalDelete={setModalDelete}/>)
-        }
-        {
-          modalDelete && <ModalDelete setModalDelete={setModalDelete} newsData={modalDelete} setChangeFeed={setChangeFeed}/>
-        }
-      </section>
-    )
+    return articles.length === 0 ?
+    <Warning title='Nenhuma notícia encontrada' description='Parece que não foi possível achar nenhuma notícia no momento' svg='notFound'/> :
+    <section className={styles.feed}>
+      {
+        articles.map((article) => <Article key={article.id} news={article} setModalDelete={setModalDelete}/>)
+      }
+      {
+        modalDelete && <ModalDelete setModalDelete={setModalDelete} newsData={modalDelete} setChangeFeed={setChangeFeed}/>
+      }
+    </section>
   }
     
   else return null;
 }
 
 Feed.propTypes = {
-  page: PropTypes.arrayOf(PropTypes.number).isRequired,
+  page: PropTypes.number.isRequired,
   setInfinite: PropTypes.func.isRequired,
   queryParams: PropTypes.object,
 }

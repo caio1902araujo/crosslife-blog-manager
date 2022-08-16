@@ -13,10 +13,14 @@ import Loader from '../../Components/Loader/Loader';
 import { NEWS_POST, NEWS_COVER_PATCH } from '../../Services/API';
 
 const NewsCreate = () => {
-  const {request, loading} = useFetch();
+  const {request, loading, error} = useFetch();
   const [page, setPage] = React.useState(1);
   const { setAlert } = React.useContext(AuthContext);
   const navigate = useNavigate();
+  let propsAlert = {
+    message: 'Notícia postada com sucesso',
+    typeAlert: 'alertSuccess',
+  }
   
   const title = useForm(true);
   const subtitle = useForm(false);
@@ -27,10 +31,6 @@ const NewsCreate = () => {
   const handleSubmitNews = async () => {
     if(category.validate()){
       const token = window.localStorage.getItem('token');
-      let propsAlert = {
-        message: 'Notícia postada com sucesso',
-        typeAlert: 'alertSuccess',
-      }
 
       const body = {
         title: title.value,
@@ -49,25 +49,11 @@ const NewsCreate = () => {
           formData.append('cover', image.raw);
 
           const {url, options} = NEWS_COVER_PATCH(json.id, formData, token);
-          const {response} = await request(url, options);
-
-          if(!response.ok){
-            propsAlert = {
-              message: 'Falha ao postar imagem de capa',
-              typeAlert: 'alertError',
-            }
-          }
+          await request(url, options);
         }
       }
-      else{
-        propsAlert = {
-          message: 'Falha ao postar a notícia, erro interno',
-          typeAlert: 'alertError',
-        }
-      }
-      setAlert(propsAlert);
-      navigate('/noticias');
     }
+    setPage(3)
   }
 
   switch (page){
@@ -78,6 +64,19 @@ const NewsCreate = () => {
         <FormNewsPartTwo setPage={setPage} image={image} setImage={setImage} category={category} handleSubmitNews={handleSubmitNews}/>
         {loading && <Loader description='Postando notícia'/>}
       </>
+    case 3:
+      
+      if(error){
+        propsAlert = {
+          message: error,
+          typeAlert: 'alertError',
+        };
+      }
+      
+      setAlert(propsAlert);
+      navigate('/noticias');
+
+      return null
     default:
       return null
   }

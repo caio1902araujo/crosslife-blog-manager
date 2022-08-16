@@ -1,19 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {ReactComponent as ErrorIcon} from '../../Assets/error.svg';
+import {ReactComponent as Error} from '../../Assets/error.svg';
+import { ReactComponent as NotFound } from '../../Assets/notFound.svg';
 
 import styles from './Warning.module.css';
 
-const Warning = ({title, description}) => {
+const svgs = {
+  notFound: <NotFound />,
+  error: <Error />,
+};
+
+
+const Warning = ({title, description, svg}) => {
   return (
     <section className={styles.wrapperWarning}>
       <div>
-        <ErrorIcon />
+        {svgs[svg]}
       </div>
       
       <div className={styles.contentError}>
-        <h2 className='subtitle'>{title}</h2>
+        <h2 className={styles.title}>{title}</h2>
         <p>{description}</p>
       </div>
     </section>
@@ -23,6 +30,7 @@ const Warning = ({title, description}) => {
 Warning.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  svg: PropTypes.string,
 }
 
 export default Warning;
