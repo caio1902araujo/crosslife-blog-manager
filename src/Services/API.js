@@ -83,3 +83,41 @@ export const NEWS_GET_ID = (id, token) => (
     }
   }
 )
+
+export const AUTHOR_GET = (token) => (
+  {
+    url: `${url}/profile/author`,
+    options: {
+      method: 'GET',
+      cache: 'no-store',
+      headers: {Authorization: `Bearer ${token}`}
+    }
+  }
+)
+
+export const AUTHOR_AVATAR_PATCH = (formData, token) => (
+  {
+    url:`${url}/profile/author/avatar`,
+    options: {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      body: formData,
+    }
+  }
+)
+
+export const AUTHOR_PUT = (body, token) => (
+  {
+    url:`${url}/profile/author`,
+    options: {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(body),
+    }
+  }
+)
