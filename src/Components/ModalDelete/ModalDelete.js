@@ -28,7 +28,7 @@ const ModalDelete = ({setModalDelete, newsData, setChangeFeed}) => {
       const token = window.localStorage.getItem('token');
       const {url, options} = NEWS_DELETE(newsData.id, token);
       const {response} = await request(url, options);
-      if (response.ok) {
+      if (response && response.ok) {
         setModalDelete(false);
         setChangeFeed(changeFeed => changeFeed + 1);
         propsAlert = {

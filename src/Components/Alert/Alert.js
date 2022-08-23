@@ -8,6 +8,7 @@ import styles from './Alert.module.css';
 
 const Alert = ({message, typeAlert}) => {
   const {setAlert} = React.useContext(AuthContext);
+
   const interval = setTimeout(()=>{setAlert(null)}, 3000);
 
   const handleClick = () => {

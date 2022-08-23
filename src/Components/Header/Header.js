@@ -28,7 +28,7 @@ const Header = () => {
           <Link to='/noticias'> <Logo /> </Link>
         </div>
 
-        <Link to='pesquisa' className={styles.itemHeader}>
+        <Link to='/noticias/pesquisa' className={styles.itemHeader}>
           <Tooltip description='Pesquisar'>
             <Magnifier/>
           </Tooltip>

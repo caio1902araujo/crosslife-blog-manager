@@ -15,7 +15,8 @@ import { NEWS_GET_ID, NEWS_PUT, NEWS_COVER_PATCH } from '../../Services/API';
 
 const NewsEdit = () => {
   const {id} = useParams();
-  const {data, error, loading, request} = useFetch();
+  const fetchNewsGet = useFetch();
+  const fetchNewsPut = useFetch();
   const [page, setPage] = React.useState(1);
   const { setAlert } = React.useContext(AuthContext);
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const NewsEdit = () => {
     const requestNews = async () => {
       const token = window.localStorage.getItem('token');
       const {url, options} = NEWS_GET_ID(id, token);
-      const { json } = await request(url, options);
+      const { json } = await fetchNewsGet.request(url, options);
 
       if(json){
         title.setValue(json.title);
@@ -48,7 +49,7 @@ const NewsEdit = () => {
       }
     }
     requestNews();
-  }, [request, id]);
+  }, [id]);
 
   const handleSubmitNews = async () => {
     if(category.validate()){
@@ -61,8 +62,8 @@ const NewsEdit = () => {
         category: category.value, 
       };
 
-      const {url, options} = NEWS_PUT(data.id, body, token);
-      const {response, json} = await request(url, options);
+      const {url, options} = NEWS_PUT(fetchNewsGet.data.id, body, token);
+      const {response, json} = await fetchNewsPut.request(url, options);
 
       if (response && response.ok){
         if(Object.keys(image).length > 0 && image.url !== json.coverUrl){
@@ -71,37 +72,50 @@ const NewsEdit = () => {
           formData.append('cover', image.raw);
 
           const {url, options} = NEWS_COVER_PATCH(json.id, formData, token);
-          await request(url, options);
+          await fetchNewsPut.request(url, options);
         }
       }
       setPage(3)
     }
   }
 
-  if(error) {
-    propsAlert = {
-      message: error,
-      typeAlert: 'alertError',
-    };
-    setAlert(propsAlert);
-    navigate('/noticias');
+  if(fetchNewsGet.error) {
+    setTimeout(()=>{
+      propsAlert = {
+        message: fetchNewsGet.error,
+        typeAlert: 'alertError',
+      };
+      setAlert(propsAlert);
+      navigate('/noticias');
+    }, 0);
+
+    return null;
   }
 
-  if (loading) return <Loader description='Carregando notícia'/>
+  if (fetchNewsGet.loading) return <Loader description='Carregando notícia'/>
 
-  if(data) {
+  if(fetchNewsGet.data) {
     switch (page){
       case 1:
         return <FormNewsPartOne title={title} subtitle={subtitle} paragraph={paragraph} setPage={setPage}/>
       case 2:
         return <>
           <FormNewsPartTwo setPage={setPage} image={image} setImage={setImage} category={category} handleSubmitNews={handleSubmitNews}/>
-          {loading && <Loader description='Postando notícia'/>}
+          {fetchNewsPut.loading && <Loader description='Postando notícia'/>}
         </>
       case 3:
-        setAlert(propsAlert);
-        navigate('/noticias');
-        return null
+        setTimeout(()=>{
+          if(fetchNewsPut.error){
+            propsAlert = {
+              message: fetchNewsPut.error,
+              typeAlert: 'alertError',
+            };
+          }
+          setAlert(propsAlert);
+          navigate('/noticias');
+        }, 0);
+
+        return null;
       default:
         return null
     }

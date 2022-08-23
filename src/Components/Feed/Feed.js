@@ -29,7 +29,6 @@ const Feed = ({page, queryParams, setInfinite}) => {
 
       const { url, options } = NEWS_GET(token, queryString);
       const { response, json } = await request(url, options);
-
       const infinite = (response && response.ok && json[0].length < 9) ? false : true;
       setInfinite(infinite);
     })();
@@ -37,7 +36,9 @@ const Feed = ({page, queryParams, setInfinite}) => {
   }, [changeFeed, queryParams, page]);
 
   if(error) return <Warning title='Erro ao carregar notícias' description={error} svg='error'/>
-  if(loading) return <Loader description="Carregando notícias"/>
+  if(loading) {
+    return <Loader description="Carregando notícias"/>
+  }
   if(data){
     const [articles] = data;
     return articles.length === 0 ?
