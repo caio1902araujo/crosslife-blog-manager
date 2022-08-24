@@ -11,7 +11,7 @@ import Filters from '../../Components/Filters/Filters';
 
 const NewsSearch = () => {
   const {alert} = React.useContext(AuthContext);
-  const {pages, setInfinite} = useScrollInfinite();
+  const {pages, resetPage, setInfinite} = useScrollInfinite();
   const [queryParams, setQueryParams] = useQueryParams();
 
   return(
@@ -24,7 +24,8 @@ const NewsSearch = () => {
         pages.map((page) => (
           <Feed 
             key={page}
-            page={page} 
+            page={page}
+            resetPage={resetPage}
             queryParams={queryParams}
             setInfinite={setInfinite}
           />

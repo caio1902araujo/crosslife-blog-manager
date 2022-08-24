@@ -16,10 +16,9 @@ const useScrollInfinite = () => {
           setPages((pages) => [...pages, pages.length + 1]);
 
           wait = true;
-
-          setTimeout(()=>{
-            wait = false;
-          }, 500);
+        }
+        else if(scrollY < height * .75 && wait){
+          wait = false;
         }
       }
     }
@@ -35,7 +34,8 @@ const useScrollInfinite = () => {
 
   return {
     pages,
-    setInfinite
+    resetPage: () => setPages([1]),
+    setInfinite,
   }
 }
 

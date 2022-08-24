@@ -52,8 +52,8 @@ const NewsCreate = () => {
           await request(url, options);
         }
       }
+      setPage(3);
     }
-    setPage(3)
   }
 
   switch (page){
@@ -65,17 +65,17 @@ const NewsCreate = () => {
         {loading && <Loader description='Postando notícia'/>}
       </>
     case 3:
-      
-      if(error){
-        propsAlert = {
-          message: error,
-          typeAlert: 'alertError',
-        };
-      }
-      
-      setAlert(propsAlert);
-      navigate('/noticias');
-
+      setTimeout(()=>{
+        if(error){
+          propsAlert = {
+            message: error,
+            typeAlert: 'alertError',
+          };
+        }
+        setAlert(propsAlert);
+        navigate('/noticias');
+      }, 0);
+    
       return null
     default:
       return null

@@ -14,7 +14,8 @@ const ListOptionsUser = ({id, setActive, theme, changeTheme, buttonVisibilityCon
 
   return (
     <ul id={id} ref={wrapperRef} className={`animeRight ${styles.listOptions} ${styles.listOptionsUser}`}>
-      <li><Link to=''>Minhas noticias</Link></li>
+      <li><Link to='/autor'>Meu perfil</Link></li>
+      <li><Link to='/noticias'>Minhas notícias</Link></li>
       <li><button onClick={changeTheme}>Tema: {theme}</button></li>
       <li><button onClick={signOut}>Sair</button></li>
     </ul>

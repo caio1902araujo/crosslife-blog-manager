@@ -1,0 +1,48 @@
+.wrapper{
+  max-width: 720px;
+  border: 2px solid var(--color-second);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 60px auto 0px;
+  height: 528px;
+}
+
+.header{
+  padding: 132px 0px 36px 25px;
+  background: linear-gradient(var(--color-fourth) 54%, var(--color-first) 46%);
+  border-bottom: 2px solid var(--color-second);
+}
+
+.name{
+  font-size: 24px;
+  font-weight: bold;
+  display: block;
+}
+
+.username{
+  color: var(--color-third);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.body{
+  padding: 20px 25px 30px;
+}
+
+.bodyHeader{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.title{
+ font-size: 18px;
+}
+
+@media (max-width: 720px){
+  .wrapper{
+    margin-top: 0px;
+    border: none;
+    border-radius: 0;
+  }
+}

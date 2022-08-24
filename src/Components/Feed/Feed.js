@@ -12,7 +12,7 @@ import { NEWS_GET } from '../../Services/API';
 
 import styles from './Feed.module.css';
 
-const Feed = ({page, queryParams, setInfinite}) => {
+const Feed = ({page, resetPage, queryParams, setInfinite}) => {
   const {data, error, loading, request} = useFetch();
   const [modalDelete, setModalDelete] = React.useState(false);
   const [changeFeed, setChangeFeed] = React.useState(0);
@@ -29,7 +29,6 @@ const Feed = ({page, queryParams, setInfinite}) => {
 
       const { url, options } = NEWS_GET(token, queryString);
       const { response, json } = await request(url, options);
-
       const infinite = (response && response.ok && json[0].length < 9) ? false : true;
       setInfinite(infinite);
     })();
@@ -37,7 +36,9 @@ const Feed = ({page, queryParams, setInfinite}) => {
   }, [changeFeed, queryParams, page]);
 
   if(error) return <Warning title='Erro ao carregar notícias' description={error} svg='error'/>
-  if(loading) return <Loader description="Carregando notícias"/>
+  if(loading) {
+    return <Loader description="Carregando notícias"/>
+  }
   if(data){
     const [articles] = data;
     return articles.length === 0 ?
@@ -47,7 +48,7 @@ const Feed = ({page, queryParams, setInfinite}) => {
         articles.map((article) => <Article key={article.id} news={article} setModalDelete={setModalDelete}/>)
       }
       {
-        modalDelete && <ModalDelete setModalDelete={setModalDelete} newsData={modalDelete} setChangeFeed={setChangeFeed}/>
+        modalDelete && <ModalDelete setModalDelete={setModalDelete} resetPage={resetPage} newsData={modalDelete} setChangeFeed={setChangeFeed}/>
       }
     </section>
   }

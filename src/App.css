@@ -11,6 +11,8 @@ html.dark {
   --color-first: #13161b;
   --color-second: #fff;
   --color-fourth: #191c20;
+  --color-skeleton-primary: #50535a;
+  --color-skeleton-secondary: #656871;
 }
 
 html {
@@ -19,6 +21,8 @@ html {
   --color-third: #6be067;
   --color-fourth: #d9e0e6;
   --color-error: #f31;
+  --color-skeleton-primary: #eee;
+  --color-skeleton-secondary: var(--color-first);
 }
 
 body {

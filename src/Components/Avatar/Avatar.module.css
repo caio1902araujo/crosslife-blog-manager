@@ -1,0 +1,25 @@
+.avatar{
+  width: 133px;
+  height: 133px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.skeleton{
+  width: 133px;
+  height: 133px;
+  border-radius: 50%;
+  background-size: 200%;
+  background-color: var(--color-fourth);
+  background-image: linear-gradient(90deg, var(--color-skeleton-primary) 0px, var(--color-skeleton-secondary) 50%, var(--color-skeleton-primary) 100%);
+  animation: loading 1.2s infinite linear;
+}
+
+@keyframes loading{
+  to{
+    background-position: 0px;
+  }
+  from{
+    background-position: -200%;
+  }
+}
