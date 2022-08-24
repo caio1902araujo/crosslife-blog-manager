@@ -10,7 +10,7 @@ import HeaderNews from '../../Components/HeaderNews/HeaderNews';
 
 const NewsFeed = () => {
   const navigate = useNavigate();
-  const {pages, setInfinite} = useScrollInfinite();
+  const {pages, resetPage, setInfinite} = useScrollInfinite();
   const {alert} = React.useContext(AuthContext);
   const buttonSecondaryConfig = {
     content: 'Criar Notícia',
@@ -21,7 +21,7 @@ const NewsFeed = () => {
     <>
       <HeaderNews title='Suas Notícias' buttonSecondary={buttonSecondaryConfig}/>
       {
-        pages.map((page) => <Feed key={page} page={page} setInfinite={setInfinite}/>)
+        pages.map((page) => <Feed key={page} page={page} resetPage={resetPage} setInfinite={setInfinite}/>)
       }
       {alert && <Alert message={alert.message} typeAlert={alert.typeAlert}/> }
     </>

@@ -52,8 +52,8 @@ const NewsCreate = () => {
           await request(url, options);
         }
       }
+      setPage(3);
     }
-    setPage(3)
   }
 
   switch (page){

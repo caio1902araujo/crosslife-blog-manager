@@ -34,7 +34,8 @@ const useScrollInfinite = () => {
 
   return {
     pages,
-    setInfinite
+    resetPage: () => setPages([1]),
+    setInfinite,
   }
 }
 

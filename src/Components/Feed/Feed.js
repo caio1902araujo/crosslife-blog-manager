@@ -12,7 +12,7 @@ import { NEWS_GET } from '../../Services/API';
 
 import styles from './Feed.module.css';
 
-const Feed = ({page, queryParams, setInfinite}) => {
+const Feed = ({page, resetPage, queryParams, setInfinite}) => {
   const {data, error, loading, request} = useFetch();
   const [modalDelete, setModalDelete] = React.useState(false);
   const [changeFeed, setChangeFeed] = React.useState(0);
@@ -48,7 +48,7 @@ const Feed = ({page, queryParams, setInfinite}) => {
         articles.map((article) => <Article key={article.id} news={article} setModalDelete={setModalDelete}/>)
       }
       {
-        modalDelete && <ModalDelete setModalDelete={setModalDelete} newsData={modalDelete} setChangeFeed={setChangeFeed}/>
+        modalDelete && <ModalDelete setModalDelete={setModalDelete} resetPage={resetPage} newsData={modalDelete} setChangeFeed={setChangeFeed}/>
       }
     </section>
   }

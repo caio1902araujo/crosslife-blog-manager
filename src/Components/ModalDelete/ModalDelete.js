@@ -14,7 +14,7 @@ import { NEWS_DELETE } from '../../Services/API';
 
 import styles from './ModalDelete.module.css';
 
-const ModalDelete = ({setModalDelete, newsData, setChangeFeed}) => {
+const ModalDelete = ({setModalDelete, resetPage, newsData, setChangeFeed}) => {
   const titleNews = useForm(true, '', newsData.title);
   const {request, loading} = useFetch();
   const wrapperRef = React.useRef(null);
@@ -31,6 +31,7 @@ const ModalDelete = ({setModalDelete, newsData, setChangeFeed}) => {
       if (response && response.ok) {
         setModalDelete(false);
         setChangeFeed(changeFeed => changeFeed + 1);
+        resetPage();
         propsAlert = {
           message: 'Notícia deletada com sucesso',
           typeAlert: 'alertSuccess',
