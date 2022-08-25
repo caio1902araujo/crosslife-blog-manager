@@ -7,6 +7,7 @@ import useScrollInfinite from '../../Hooks/useScrollInfinite';
 import Alert from '../../Components/Alert/Alert';
 import Feed from '../../Components/Feed/Feed';
 import HeaderNews from '../../Components/HeaderNews/HeaderNews';
+import Head from '../../Components/head/head';
 
 const NewsFeed = () => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const NewsFeed = () => {
 
   return (
     <>
+      <Head title='Home' description='home do gerenciador'/>
       <HeaderNews title='Suas Notícias' buttonSecondary={buttonSecondaryConfig}/>
       {
         pages.map((page) => <Feed key={page} page={page} resetPage={resetPage} setInfinite={setInfinite}/>)

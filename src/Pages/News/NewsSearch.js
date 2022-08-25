@@ -8,6 +8,7 @@ import Alert from '../../Components/Alert/Alert';
 import Feed from '../../Components/Feed/Feed';
 import Search from '../../Components/Search/Search';
 import Filters from '../../Components/Filters/Filters';
+import Head from '../../Components/head/head';
 
 const NewsSearch = () => {
   const {alert} = React.useContext(AuthContext);
@@ -16,10 +17,13 @@ const NewsSearch = () => {
 
   return(
     <>
+      <Head title='Pesquisar' description='página para pesquisar e filtrar notícias'/>
+
       <form onSubmit={(event) => event.preventDefault()}>
         <Search queryParams={queryParams} setQueryParams={setQueryParams} />
         <Filters queryParams={queryParams} setQueryParams={setQueryParams}/>
       </form>
+
       {
         pages.map((page) => (
           <Feed 
@@ -31,6 +35,7 @@ const NewsSearch = () => {
           />
         ))
       }
+
       {alert && <Alert message={alert.message} typeAlert={alert.typeAlert}/> }
     </>
   );

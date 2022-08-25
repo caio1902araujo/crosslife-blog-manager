@@ -8,6 +8,7 @@ import Loader from '../../Components/Loader/Loader';
 import Warning from '../../Components/Warning/Warning';
 import Avatar from '../../Components/Avatar/Avatar';
 import Alert from '../../Components/Alert/Alert';
+import Head from '../../Components/head/head';
 import ModalDescriptionAuthor from '../../Components/ModalDescriptionAuthor/ModalDescriptionAuthor';
 import { ReactComponent as Pencil } from '../../Assets/pencil.svg';
 
@@ -48,6 +49,7 @@ const ProfileAuthor = () => {
   if(data){
     return (
       <>  
+        <Head title={data.name} description='Perfil do autor'/>
         <Header />
         <section className={styles.wrapper}>
           <div className={styles.header}>

@@ -7,6 +7,7 @@ import Logo from '../../Components/Logo/Logo';
 import Input from '../../Components/Input/Input';
 import ErrorSecondary from '../../Helper/Error/ErrorSecondary';
 import ButtonSecondary from '../../Components/Button/ButtonSecondary';
+import Head from '../../Components/head/head';
 
 import styles from './Login.module.css';
 
@@ -24,6 +25,7 @@ const Login = () => {
 
   return (
     <div className={styles.wrapper}>
+      <Head title='Login' description='página para login do autor'/>
       <Logo/>
       <form onSubmit={handleSubmit}>
         <Input label='Usuário' id='username' type='text' {...username}/>

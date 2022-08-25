@@ -12,6 +12,7 @@ import FormNewsPartTwo from '../../Components/FormNewsPartTwo/FormNewsPartTwo';
 import Loader from '../../Components/Loader/Loader';
 
 import { NEWS_GET_ID, NEWS_PUT, NEWS_COVER_PATCH } from '../../Services/API';
+import Head from '../../Components/head/head';
 
 const NewsEdit = () => {
   const {id} = useParams();
@@ -97,7 +98,12 @@ const NewsEdit = () => {
   if(fetchNewsGet.data) {
     switch (page){
       case 1:
-        return <FormNewsPartOne title={title} subtitle={subtitle} paragraph={paragraph} setPage={setPage}/>
+        return (
+          <>
+            <Head title='Editar notícia' description='página para editar notícia' />
+            <FormNewsPartOne title={title} subtitle={subtitle} paragraph={paragraph} setPage={setPage}/>
+          </>
+        )
       case 2:
         return <>
           <FormNewsPartTwo setPage={setPage} image={image} setImage={setImage} category={category} handleSubmitNews={handleSubmitNews}/>

@@ -9,6 +9,7 @@ import { AuthContext } from '../../Hooks/useAuth';
 import FormNewsPartOne from '../../Components/FormNewsPartOne/FormNewsPartOne';
 import FormNewsPartTwo from '../../Components/FormNewsPartTwo/FormNewsPartTwo';
 import Loader from '../../Components/Loader/Loader';
+import Head from '../../Components/head/head';
 
 import { NEWS_POST, NEWS_COVER_PATCH } from '../../Services/API';
 
@@ -58,7 +59,12 @@ const NewsCreate = () => {
 
   switch (page){
     case 1:
-      return <FormNewsPartOne title={title} subtitle={subtitle} paragraph={paragraph} setPage={setPage}/>
+      return (
+        <>
+          <Head title='Criar Notícia' description='página para criar notícia'/>
+          <FormNewsPartOne title={title} subtitle={subtitle} paragraph={paragraph} setPage={setPage}/>
+        </>
+      )
     case 2:
       return <>
         <FormNewsPartTwo setPage={setPage} image={image} setImage={setImage} category={category} handleSubmitNews={handleSubmitNews}/>
