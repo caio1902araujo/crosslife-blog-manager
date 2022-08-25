@@ -1,4 +1,4 @@
-const url = 'https://crosslife-api.herokuapp.com';
+const url = process.env.REACT_APP_BASE_URL;
 
 export const SIGN_IN = (username, password) => (
   {
