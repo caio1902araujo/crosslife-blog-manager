@@ -23,7 +23,7 @@ Seguir o passo a passo para conseguir rodar a aplicação na sua máquina
 git clone https://github.com/caio1902araujo/crosslife-blog-manager.git
 
 // Entrando no diretório:
-cd crosslife-blog
+cd crosslife-blog-manager
 
 // Instalando dependências:
 npm install package.json
@@ -38,7 +38,7 @@ npm run start
 git clone https://github.com/caio1902araujo/crosslife-blog-manager.git
 
 // Entrando no diretório:
-cd crosslife-blog
+cd crosslife-blog-manager
 
 // Instalando dependências:
 yarn
