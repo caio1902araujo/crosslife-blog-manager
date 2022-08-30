@@ -6,6 +6,7 @@ const useScrollInfinite = () => {
 
   React.useEffect(()=>{
     let wait = false;
+    console.log(window.scroll)
 
     const infiniteScroll = () => {
       if(infinite){
@@ -23,11 +24,9 @@ const useScrollInfinite = () => {
       }
     }
     
-    window.addEventListener('wheel', infiniteScroll);
     window.addEventListener('scroll', infiniteScroll);
 
     return () => {
-      window.removeEventListener('wheel', infiniteScroll);
       window.removeEventListener('scroll', infiniteScroll);
     }
   }, [infinite]);
