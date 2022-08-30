@@ -62,12 +62,12 @@ const NewsCreate = () => {
       return (
         <>
           <Head title='Criar Notícia' description='página para criar notícia'/>
-          <FormNewsPartOne title={title} subtitle={subtitle} paragraph={paragraph} setPage={setPage}/>
+          <FormNewsPartOne headerTitle="Criando notícia" title={title} subtitle={subtitle} paragraph={paragraph} setPage={setPage}/>
         </>
       )
     case 2:
       return <>
-        <FormNewsPartTwo setPage={setPage} image={image} setImage={setImage} category={category} handleSubmitNews={handleSubmitNews}/>
+        <FormNewsPartTwo setPage={setPage} headerTitle="Criando notícia" image={image} setImage={setImage} category={category} handleSubmitNews={handleSubmitNews}/>
         {loading && <Loader description='Postando notícia'/>}
       </>
     case 3:

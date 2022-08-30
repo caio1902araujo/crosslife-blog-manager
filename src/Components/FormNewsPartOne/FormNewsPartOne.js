@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import HeaderNews from '../HeaderNews/HeaderNews';
 import Input from '../Input/Input';
 
-const FormNewsPartOne = ({title, subtitle, paragraph, setPage}) => {
-  
+const FormNewsPartOne = ({title, subtitle, paragraph, headerTitle, setPage}) => {
+
   const buttonSecondaryConfig = {
     content: 'Próximo',
     onClick: () => {
@@ -15,14 +15,19 @@ const FormNewsPartOne = ({title, subtitle, paragraph, setPage}) => {
     }
   }
 
-  const handleResize = ({target}) => {
-    target.style.height = 'auto';
-    target.style.height = (target.scrollHeight) + 'px';
-  } 
+  const handleResize = () => {
+    const textbox = document.querySelector('#paragraph');
+    textbox.style.height = 'auto';
+    textbox.style.height = (textbox.scrollHeight) + 'px';
+  }
+
+  React.useEffect(()=>{
+    handleResize();
+  }, [paragraph.value])
 
   return (
     <>
-      <HeaderNews title='Criando notícia' buttonSecondary={buttonSecondaryConfig}/>
+      <HeaderNews title={headerTitle} buttonSecondary={buttonSecondaryConfig}/>
       <form>
         <Input 
           label='Título' 
@@ -48,7 +53,6 @@ const FormNewsPartOne = ({title, subtitle, paragraph, setPage}) => {
           label='Corpo da notícia' 
           id='paragraph' 
           isBox={true} 
-          onInput={handleResize} 
           error={paragraph.error} 
           value={paragraph.value} 
           onChange={paragraph.onChange} 
@@ -64,6 +68,7 @@ FormNewsPartOne.propTypes = {
   subtitle: PropTypes.object.isRequired,
   paragraph: PropTypes.object.isRequired,
   setPage: PropTypes.func.isRequired,
+  headerTitle: PropTypes.string.isRequired,
 }
 
 export default FormNewsPartOne;

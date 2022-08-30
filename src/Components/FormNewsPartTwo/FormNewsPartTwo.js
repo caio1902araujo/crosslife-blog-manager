@@ -10,7 +10,7 @@ import styles from './FormNewsPartTwo.module.css';
 
 const listItems = ['academia', 'esportes', 'fitness', 'nutrição', 'receitas', 'saúde'];
 
-const FormNewsPartTwo = ({setPage, image, setImage, category, handleSubmitNews}) => {
+const FormNewsPartTwo = ({setPage, image, headerTitle, setImage, category, handleSubmitNews}) => {
   const buttonSecondaryConfig = {
     content: 'Enviar',
     onClick: handleSubmitNews
@@ -25,7 +25,7 @@ const FormNewsPartTwo = ({setPage, image, setImage, category, handleSubmitNews})
 
   return (
     <>
-      <HeaderNews title='Criando notícia' buttonPrimary={ButtonPrimaryConfig} buttonSecondary={buttonSecondaryConfig}/>
+      <HeaderNews title={headerTitle} buttonPrimary={ButtonPrimaryConfig} buttonSecondary={buttonSecondaryConfig}/>
       <div className={styles.wrapperConfigNews}>
         <form onSubmit={(event) => event.preventDefault()}>
           <h3 className='subtitle'>Capa para a notícia</h3>
@@ -61,6 +61,7 @@ FormNewsPartTwo.propTypes = {
   image: PropTypes.object.isRequired,
   setImage: PropTypes.func.isRequired,
   setPage: PropTypes.func.isRequired,
+  headerTitle: PropTypes.string.isRequired,
 }
 
 export default FormNewsPartTwo;

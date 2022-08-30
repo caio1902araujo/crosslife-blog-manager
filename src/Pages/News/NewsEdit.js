@@ -101,12 +101,12 @@ const NewsEdit = () => {
         return (
           <>
             <Head title='Editar notícia' description='página para editar notícia' />
-            <FormNewsPartOne title={title} subtitle={subtitle} paragraph={paragraph} setPage={setPage}/>
+            <FormNewsPartOne headerTitle="Editando notícia" title={title} subtitle={subtitle} paragraph={paragraph} setPage={setPage}/>
           </>
         )
       case 2:
         return <>
-          <FormNewsPartTwo setPage={setPage} image={image} setImage={setImage} category={category} handleSubmitNews={handleSubmitNews}/>
+          <FormNewsPartTwo setPage={setPage} headerTitle="Editando notícia" image={image} setImage={setImage} category={category} handleSubmitNews={handleSubmitNews}/>
           {fetchNewsPut.loading && <Loader description='Postando notícia'/>}
         </>
       case 3:
