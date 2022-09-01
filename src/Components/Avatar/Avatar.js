@@ -5,7 +5,6 @@ import useFetch from '../../Hooks/useFetch';
 import { AuthContext } from '../../Hooks/useAuth';
 
 import InputFile from '../InputFile/InputFile';
-import Loader from '../Loader/Loader';
 import defaultAvatar from '../../Assets/defaultAvatar.png';
 
 import { AUTHOR_AVATAR_PATCH } from '../../Services/API';
