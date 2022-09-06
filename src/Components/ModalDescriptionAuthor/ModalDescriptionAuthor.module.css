@@ -2,8 +2,8 @@
   width: 100vw;
   height: 100vh;
   position: fixed;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   background: rgba(0, 0, 0, 0.4);
   z-index: 1000;
   padding: 0 1rem;
@@ -12,7 +12,7 @@
 .wrapper{
   background-color: var(--color-first);
   border-radius: 0.375rem;
-  max-width: 400px;
+  max-width: 25rem;
   max-height: 80vh;
   overflow: auto;
   margin: 10vh auto;

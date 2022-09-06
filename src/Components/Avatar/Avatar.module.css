@@ -1,13 +1,13 @@
 .avatar{
-  width: 133px;
-  height: 133px;
+  width: 8.3125rem;
+  height: 8.3125rem;
   border-radius: 50%;
   overflow: hidden;
 }
 
 .skeleton{
-  width: 133px;
-  height: 133px;
+  width: 8.3125rem;
+  height: 8.3125rem;
   border-radius: 50%;
   background-size: 200%;
   background-color: var(--color-fourth);

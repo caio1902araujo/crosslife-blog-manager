@@ -7,6 +7,7 @@ import Login from './Pages/Login/Login';
 import News from './Pages/News/News';
 import ProfileAuthor from './Pages/ProfileAuthor/ProfileAuthor';
 import ProtectedRoute from './Helper/ProtectedRoute/ProtectedRoute';
+import NotFound from './Pages/NotFound/NotFound';
 
 import './App.css';
 
@@ -21,6 +22,8 @@ function App() {
             <Route path='noticias/*' element={<ProtectedRoute component={<News/>}/>}/>
 
             <Route path='autor' element={<ProtectedRoute component={<ProfileAuthor/>}/>}/>
+
+            <Route path='*' element={<ProtectedRoute component={<NotFound/>}/>}/>
           </Routes>
         </AuthProvider>
       </BrowserRouter>
